@@ -1,6 +1,6 @@
 package obj;
 
-public class Elderly implements Ticket {
+public class Elderly implements TicketType {
 
   public double getPrice(){
     return 100.00 * 0.7;
