@@ -27,7 +27,7 @@ public class Cinema implements Comparable<Cinema>{
 	    }
 
 	    theatreList.add(theatre);	
-	    collection.sort(theatreList);
+	    Collections.sort(theatreList);
 	}
 
 	public Theatre getTheatre(String theatreID) {
@@ -46,7 +46,12 @@ public class Cinema implements Comparable<Cinema>{
 	}
 				
         public String toCatalogItemString(){
-	    
-        }
+	    String output = "Cinema ID: " + cinemaID + "\n";
+	    output = output + "Location: " + location + "\n";
+	    output = output + "Name: " + name + "\n";
+	    output = output + "Phone number: " + phoneNo + "\n";
+		
+	    return output;
+       }
 		
 }
