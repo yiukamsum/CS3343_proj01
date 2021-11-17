@@ -1,43 +1,52 @@
 package obj;
 
-public class Cinema {
-	private String cinemaId;
-	private String cinemaLoc;
-	private String cinemName;
-	private String cinemaPhoneNo;
+import java.util.*;
+
+public class Cinema implements Comparable<Cinema>{
+	private String cinemaID;
+	private String location;
+	private String name;
+	private String phoneNo;
+	private ArrayList<Theatre> theatreList = new ArrayList<Theatre>();
 	
-	public Cinema() {
-		this.cinemaId = "";
-		this.cinemaLoc = "";
-		this.cinemName = "";
-		this.cinemaPhoneNo = "";
+	public Cinema(String cinemaID, String location, String name, String phoneNo) {
+		this.cinemaID = cinemaID;
+		this.location = location;
+		this.name = name;
+		this.phoneNo = phoneNo;
 	}
 
-	public String getCinemaId() {
-		return this.cinemaId;
+	public void addTheatre(Theatre theatre) {
+	    if(!theatreList.empty()){
+	        for(theatre t: theatreList){
+		    if(t == theatre){
+		         System.println.out("The theatre is already existed!");
+		         return;
+		    }
+	        }
+	    }
+
+	    theatreList.add(theatre);	
+	    collection.sort(theatreList);
 	}
 
-	public String getCinemaLoc() {
-		return this.cinemaLoc;
+	public Theatre getTheatre(String theatreID) {
+		if(!theatreList.empty()){
+		    for(theatre t: theatreList){
+			if(t.getTheatreID().equals(theatreID))	     
+			    return t;			
+		 }
+			
+		return NULL;
 	}
-
-	public void setCinemaLoc(String cinemaLoc) {
-		this.cinemaLoc = cinemaLoc;
+		
+	@Override
+	public int compareTo(Cinema cinema){
+	    return this.cinemaID.compareTo(cinema.cinemaID);
 	}
-
-	public String getCinemName() {
-		return this.cinemName;
-	}
-
-	public void setCinemName(String cinemName) {
-		this.cinemName = cinemName;
-	}
-
-	public String getCinemaPhoneNo() {
-		return this.cinemaPhoneNo;
-	}
-
-	public void setCinemaPhoneNo(String cinemaPhoneNo) {
-		this.cinemaPhoneNo = cinemaPhoneNo;
-	}
+				
+        public String toCatalogItemString(){
+	   
+         }
+		
 }
