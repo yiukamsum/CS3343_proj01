@@ -1,14 +1,25 @@
 package obj;
 
 public abstract class Ticket {
-	private Integer ticketPrice;
-	private String ticketType;
+	private TicketType type;
+	private MovieSession session;
 	
-	public Integer getTicketPrice() {
-		return this.ticketPrice;
+	public Ticket(TicketType type, MovieSession session) {
+		this.type = type;
+		this.session = session;
 	}
 	
-	public void setTicketPrice(Integer ticketPrice) {
-		this.ticketPrice = ticketPrice;
+	public String getType() {
+		return type.getType();
 	}
+	
+	public Integer getPrice() {
+		return type.getPrice();
+	}
+	
+	public MovieSession getSession(){
+		return session;
+	}
+	
+	
 }
