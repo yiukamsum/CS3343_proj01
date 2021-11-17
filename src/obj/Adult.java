@@ -1,6 +1,6 @@
 package obj;
 
-public class Adult implement TicketType {
+public class Adult implements TicketType {
     public double getPrice(){
          return 100.00;
     }
