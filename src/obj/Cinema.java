@@ -20,7 +20,7 @@ public class Cinema implements Comparable<Cinema>{
 	    if(!theatreList.empty()){
 	        for(theatre t: theatreList){
 		    if(t == theatre){
-		         System.println.out("The theatre is already existed!");
+		         System.out.println("The theatre is already existed!");
 		         return;
 		    }
 	        }
@@ -46,7 +46,7 @@ public class Cinema implements Comparable<Cinema>{
 	}
 				
         public String toCatalogItemString(){
-	   
-         }
+	    
+        }
 		
 }
