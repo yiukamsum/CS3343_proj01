@@ -6,7 +6,7 @@ public class Adult implements TicketType {
     }
   
     public String getType(){
-      return "Adult";
+         return "Adult";
     }
   
 }
