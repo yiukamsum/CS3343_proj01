@@ -44,7 +44,8 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 	public int compareTo(Cinema cinema){
 	    return this.cinemaID.compareTo(cinema.cinemaID);
 	}
-				
+	
+	@Override
         public String toCatalogItemString(){
 	    String output = "Cinema ID: " + cinemaID + "\n";
 	    output = output + "Location: " + location + "\n";
