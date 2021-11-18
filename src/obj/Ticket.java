@@ -13,7 +13,7 @@ public abstract class Ticket {
 		return type.getType();
 	}
 	
-	public int getPrice() {
+	public double getPrice() {
 		return type.getPrice();
 	}
 	
