@@ -47,7 +47,7 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
                 if(vancacy[i][j] == false){
                     System.out.printf("%c%d ", 65 + i, j);
                 }else{
-                    System.out.printf(" ");
+                    System.out.printf("   ");
                 }
             }
             System.out.println("");
