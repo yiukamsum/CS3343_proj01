@@ -2,7 +2,7 @@ package obj;
 
 import java.util.*;
 
-public class Theatre {
+public class Theatre implements Comparable<Theatre>{
 	private String theatreId;
 	private Integer colNum;
 	private Integer rowNum;
