@@ -1,41 +1,44 @@
 package obj;
 
-import java.io.IOException;
 import java.util.Scanner;
 
-public abstract class UserConsole {
+public class UserConsole implements Console {
 
-    ///////////////
-    /* Attribute */
     // the scanner for accpet user input
-    protected final static Scanner userInputStream = new Scanner(System.in);
+    private final static Scanner userInputStream = new Scanner(System.in);
 
-    /////////////////////
-    /* Abstract Method */
-    abstract void start();
-    abstract Account login();
+    @Override
+    public Scanner getInputStream() {
+        return userInputStream;
+    };
 
-    ///////////////////
-    /* Static Method */
-    public static UserConsole getConsole() {
-        System.out.printf(
-            "Login As:\n"+    
-            "Member\t(1)\n"+    
-            "Admin\t(2)\n"    
-        );
+    @Override
+    public void start() {
+        int input = 0;
+        do {
+            System.out.printf(
+                "\n===Start Page===\n"+
+                "Login As:\n"+    
+                "Member\t(1)\n"+    
+                "Admin\t(2)\n"+
+                "-------------\n"+
+                "Enter -1 to exit\n"
+            );
 
-        // TODO: handle non Number input
-        int userType = userInputStream.nextInt();
+            input = userInputStream.nextInt();
 
-        while(userType != 1 && userType != 2) {
-            System.out.printf("Please enter 1 or 2 to select the type: ");
-            userType = userInputStream.nextInt();
-        }
-
-        // userInputStream.nextLine();
-
-        // return user console base on the entered number
-        if(userType == 1)   { return new MemberConsole(); }
-        else/* must be 2 */ { return new AdminConsole();  }
+            switch(input) {
+                case 1:
+                    new MemberConsole().start();
+                    break;
+                case 2:
+                    new AdminConsole().start();
+                    break;
+                case -1:
+                    break;
+                default:
+                    System.out.println("Invalid Input\n");
+            }
+        } while(input != -1);        
     }
 }

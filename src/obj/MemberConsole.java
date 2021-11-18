@@ -6,43 +6,26 @@ public class MemberConsole extends UserConsole {
     /* Private Method */
     private Member member;
 
+    public MemberConsole() {
+        this.member = null;
+    }
 
-    ///////////////////
-    /* Public Method */
-    @Override
-    public void start() {
-        int action = 0;
-
-        System.out.printf("\n=====Member=====\n");
-
-        member = (Member)login();
-        // it will be null if user cancel login
-        if(member != null) { 
-            // Welcome msg
-            System.out.printf("Welcome %s\n", member.getAccountName());
-        }
-
-        while(member != null && action != -1) {
-            System.out.printf(
-                "\n====Menu====\n"+
-                "Enter -1 to exit system\n"
-            );
-            
-            action = userInputStream.nextInt();
-
-            switch(action) {
-                case -1:
-                    break;
-                default:
-                    System.out.printf("Invalid Input\n");
-            }
-        }
-
-        System.out.printf("\nBye Bye\n");
+    public Member getMember() {
+        return this.member;
     }
 
     @Override
-    public Account login() {
-        return new MemberLogin().login(userInputStream);
+    public void start() {
+        // ask member to login
+        member = (Member) new MemberLogin().login(getInputStream());
+        // user cancel login, end the console
+        if(member == null) { return; }
+
+        /* welcome msg */
+        System.out.printf("Welcome %s\n", member.getAccountName());
+
+        /* start the member menu */
+        MemberMenuPage memberMenu = new MemberMenuPage(this);
+        memberMenu.display();
     }
 }
