@@ -3,40 +3,28 @@ package obj;
 public class AdminConsole extends UserConsole {
     private Admin admin;
 
-    @Override
-    public void start() {
-        int action = 0;
+    public AdminConsole() {
+        this.admin = null;
+    }
 
-        System.out.printf("\n=====Admin=====\n");
-
-        admin = (Admin)login();
-        // it will be null if user cancel login
-        if(admin != null) { 
-            // Welcome msg
-            System.out.printf("Welcome %s\n", admin.getName());
-        }
-
-        while(admin != null && action != -1) {
-            System.out.printf(
-                "\n====Menu====\n"+
-                "Enter -1 to exit system\n"
-            );
-            
-            action = userInputStream.nextInt();
-
-            switch(action) {
-                case -1:
-                    break;
-                default:
-                    System.out.printf("Invalid Input\n");
-            }
-        }
-
-        System.out.printf("\nBye Bye\n");
+    public Admin getAdmin() {
+        return this.admin;
     }
 
     @Override
-    public Account login() {
-        return new AdminLogin().login(userInputStream);
+    public void start() {
+        // ask member to login
+        admin = (Admin) new AdminLogin().login(getInputStream());
+        // user cancel login
+        if(admin == null) { return; }
+
+
+        /* Welcome Msg */
+        System.out.printf("Welcome %s\n", admin.getName());
+
+
+        /* Display admin menu */
+        AdminMenuPage adminMenu = new AdminMenuPage(this);
+        adminMenu.display();
     }
 }
