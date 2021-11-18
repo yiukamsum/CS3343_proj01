@@ -3,11 +3,11 @@ package obj;
 import java.util.*;
 
 public class Theatre implements Comparable<Theatre>{
-	private String theatreId;
+	private String theatreID;
 	private Integer colNum;
 	private Integer rowNum;
 	
-	public Theatre(String theatreId, Integer colNum, Integer rowNum ) {
+	public Theatre(String theatreID, Integer colNum, Integer rowNum ) {
 		this.theatreID = theatreID;
 		this.colNum = colNum;
 		this.rowNum = rowNum;
@@ -25,7 +25,7 @@ public class Theatre implements Comparable<Theatre>{
 		return theatreID;
 	}
 	
-	public Integer compareTo(Theatre theatre){
+	public int compareTo(Theatre theatre){
 		return this.theatreID.compareTo(theatre.theatreID);
 	}
 	
