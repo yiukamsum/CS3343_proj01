@@ -17,8 +17,8 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 	}
 
 	public void addTheatre(Theatre theatre) {
-	    if(!theatreList.empty()){
-	        for(theatre t: theatreList){
+	    if(!theatreList.isEmpty()){
+	        for(Theatre t: theatreList){
 		    if(t == theatre){
 		         System.out.println("The theatre is already existed!");
 		         return;
@@ -31,13 +31,15 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 	}
 
 	public Theatre getTheatre(String theatreID) {
-		if(!theatreList.empty()){
-		    for(theatre t: theatreList){
+		if(!theatreList.isEmpty()){
+		    for(Theatre t: theatreList){
 			if(t.getTheatreID().equals(theatreID))	     
-			    return t;			
+			    return t;	
+                
+            }
 		 }
 			
-		return NULL;
+		return null;
 	}
 		
 	@Override
