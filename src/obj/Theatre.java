@@ -1,23 +1,21 @@
 package obj;
 
-import java.util.*;
-
 public class Theatre implements Comparable<Theatre>{
 	private String theatreID;
-	private Integer colNum;
-	private Integer rowNum;
+	private int colNum;
+	private int rowNum;
 	
-	public Theatre(String theatreID, Integer colNum, Integer rowNum ) {
+	public Theatre(String theatreID, int colNum, int rowNum ) {
 		this.theatreID = theatreID;
 		this.colNum = colNum;
 		this.rowNum = rowNum;
 	}
 	
-	public Integer getColNum(){
+	public int getColNum(){
 		return colNum;
 	}
 	
-	public Integer getRowNum(){
+	public int getRowNum(){
 		return rowNum;
 	}
 	
@@ -25,6 +23,7 @@ public class Theatre implements Comparable<Theatre>{
 		return theatreID;
 	}
 	
+    @Override
 	public int compareTo(Theatre theatre){
 		return this.theatreID.compareTo(theatre.theatreID);
 	}
