@@ -49,11 +49,12 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 	
 	@Override
         public String toCatalogItemString(){
-	    String output = "Name: " + name + "\n";
+	    String output = "Cinema ID: " + cinemaID + "\n";
+	    output = output + "Name: " + name + "\n";
 	    output = output + "Location: " + location + "\n";
 	    output = output + "Phone number: " + phoneNo + "\n";
 		
 	    return output;
-        }
+       }
 		
 }
