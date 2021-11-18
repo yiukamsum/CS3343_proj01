@@ -10,6 +10,7 @@ public class AdminConsole extends UserConsole {
         System.out.printf("\n=====Admin=====\n");
 
         admin = (Admin)login();
+        // it will be null if user cancel login
         if(admin != null) { 
             // Welcome msg
             System.out.printf("Welcome %s\n", admin.getName());
@@ -18,7 +19,7 @@ public class AdminConsole extends UserConsole {
         while(admin != null && action != -1) {
             System.out.printf(
                 "\n====Menu====\n"+
-                "Enter -1 to logout\n"
+                "Enter -1 to exit system\n"
             );
             
             action = userInputStream.nextInt();

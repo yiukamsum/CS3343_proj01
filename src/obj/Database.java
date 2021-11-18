@@ -4,22 +4,19 @@ import java.util.ArrayList;
 
 // Singlaton
 public class Database {
-    private static Database     DBinstance;
+    private final static Database DBinstance = new Database();
 
     private ArrayList<Member>   memberList;
     private Admin               admin;
 
     private Database() {
+        admin = Admin.getInstance();
+
         memberList  = new ArrayList<Member>();
         memberList.add(new Member("1", "Peter", "123@gmail.com", "123"));
-
-        admin = new Admin("Jack", "123");
     }
 
     public static Database connectDB() { 
-        if(DBinstance == null) {
-            DBinstance = new Database();
-        }
         return DBinstance;
     }
 

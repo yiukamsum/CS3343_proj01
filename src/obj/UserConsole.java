@@ -1,5 +1,6 @@
 package obj;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public abstract class UserConsole {
@@ -7,7 +8,7 @@ public abstract class UserConsole {
     ///////////////
     /* Attribute */
     // the scanner for accpet user input
-    protected static Scanner userInputStream = new Scanner(System.in);
+    protected final static Scanner userInputStream = new Scanner(System.in);
 
     /////////////////////
     /* Abstract Method */

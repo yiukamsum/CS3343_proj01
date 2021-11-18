@@ -13,10 +13,6 @@ public abstract class Account {
         return this.accountName;
     }
 
-    public String getPassword() {
-        return this.password;
-    }
-
     // check the input username and pw are equal to those in this obj
     public boolean checkAccount(String accountName, String password) {
         return this.accountName.equals(accountName) && this.password.equals(password);

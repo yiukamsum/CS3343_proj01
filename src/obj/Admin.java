@@ -1,20 +1,17 @@
 package obj;
 
 public class Admin extends Account {
-	private String adminId;
-	private String name;
+	private final static Admin instance = new Admin("Jack", "123");
 	
-	public Admin(String accountName, String password) {
+	private Admin(String accountName, String password) {
 		super(accountName, password);
-		this.adminId = "";
-		this.name = "";
 	}
-	
-	public void releaseDiscount(Discount discount) {
-		String ds = discount.getDiscountCode();
+
+	public static Admin getInstance() {
+		return instance;
 	}
 
 	public String getName() { 
-		return this.name; 
+		return getAccountName();
 	}
 }
