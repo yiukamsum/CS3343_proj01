@@ -1,21 +1,41 @@
 package obj;
 
-import java.util.ArrayList;
+import java.util.*;
 
-public class Movie {
-	private String movieId;
-	private String movieName;
-	private Integer runningTimes;
-	private String actor;
-	
-	public Movie() {
-		this.movieId = "";
-		this.movieName = "";
-		this.runningTimes = 0;
-		this.actor = "";
-	}
-	
-	public ArrayList<ShowingSession> viewShoingDetails(){
-		return null;
-	}
+public class Movie implements Comparable<Movie>, CatalogItem{
+
+    private String movieID;
+    private String name;
+    private DateTime releaseDate;
+    private ArrayList<String> actorList = new ArrayList<String>();
+
+    public Movie(String movieID, String name, DateTime releaseDate, ArrayList<String> actorList){
+        this.movieID = movieID;
+        this.name = name;
+        this.releaseDate = releaseDate;
+        this.actorList.addAll(actorList);
+    }
+
+    @Override
+    public int compareTo(Movie movie){
+        return this.movieID.compareTo(movie.movieID);
+    }
+    
+    @Override
+    public String toCatalogItemString(){
+        String output = "";
+        output = output + "Movie ID: " + movieID + "\n";
+        output = output + "Name: " + name + "\n";
+        output = output + "Release Date " + releaseDate.toCatalogItemString() + "\n";
+        output = output + "Actor List: ";
+
+        for(String s: actorList){
+            output = output + s + " ";
+        }
+
+        output = output + "\n";
+
+        return output;
+    }
 }
+
