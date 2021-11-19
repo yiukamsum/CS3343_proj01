@@ -1,3 +1,3 @@
-interface CatalogItem{
+public interface CatalogItem{
     public String toCatalogItemString();
 }
