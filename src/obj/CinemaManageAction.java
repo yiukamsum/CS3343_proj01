@@ -2,7 +2,7 @@ package obj;
 
 import java.util.ArrayList;
 
-public class CinemaManagerAction extends DbAction{
+public class CinemaManageAction extends DbAction{
 
     private ArrayList<Cinema> cinemaList;
 
