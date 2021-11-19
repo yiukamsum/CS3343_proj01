@@ -16,6 +16,10 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 		this.phoneNo = phoneNo;
 	}
 
+	public String getName() {
+		return this.name;
+	}
+
 	public void addTheatre(Theatre theatre) {
 	    if(!theatreList.isEmpty()){
 	        for(Theatre t: theatreList){

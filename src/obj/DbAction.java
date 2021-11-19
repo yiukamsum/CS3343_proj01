@@ -1,7 +1,5 @@
 package obj;
 
-import javax.xml.crypto.Data;
-
 public class DbAction {
     private Database db;
 

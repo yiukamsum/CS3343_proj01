@@ -76,5 +76,3 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
     }
    
 }
-
-}

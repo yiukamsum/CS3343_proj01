@@ -16,6 +16,10 @@ public class Movie implements Comparable<Movie>, CatalogItem{
         this.actorList.addAll(actorList);
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     @Override
     public int compareTo(Movie movie){
         return this.movieID.compareTo(movie.movieID);
