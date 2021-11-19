@@ -41,6 +41,9 @@ public class Database {
         return DBinstance;
     }
 
+    public ArrayList<Cinema> getCinemaList() {
+        return this.cinemaList;
+    }
 
     public ArrayList<MovieSession> getMovieSessionList() {
         return this.sessionList;
