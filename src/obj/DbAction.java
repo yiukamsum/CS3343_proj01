@@ -1,6 +1,6 @@
 package obj;
 
-public class DbAction {
+public abstract class DbAction {
     private Database db;
 
     public DbAction() {

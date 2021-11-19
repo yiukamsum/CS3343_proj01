@@ -1,6 +1,6 @@
 package obj;
 
-public abstract class Ticket {
+public class Ticket {
 	private TicketType type;
 	private MovieSession session;
 	

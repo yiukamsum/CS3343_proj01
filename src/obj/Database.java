@@ -33,6 +33,8 @@ public class Database {
         sessionList.add(
             new MovieSession(1, cinemaList.get(0), cinemaList.get(0).getTheatre(1), movieList.get(0), DateTime.now(), DateTime.now())
         );
+
+        historyList = new ArrayList<PurchaseHistory>();
     }
 
     public static Database connectDB(DbAction action) { 

@@ -45,7 +45,17 @@ public class PurchaseTicketPage extends Page {
                 boolean isConfirm = confirmSelection(selectSession, ticketNum, selectedTicketType, selectedSeatList);
                 if(isConfirm) {
                     PaymentMethod selectedPaymentMethod = selectPaymentMethod();
-                    // create PurchaseTicket
+
+                    // process payment
+                    MemberConsole memberConsole = (MemberConsole)getConsole();
+                    PurchaseTicket purchaseTicket = new PurchaseTicket(memberConsole.getMember());
+
+                    ArrayList<Ticket> paidTicketList = purchaseTicket.purchase(selectSession, selectedTicketType, selectedSeatList, selectedPaymentMethod);
+
+                    if(paidTicketList != null) {
+                        // ask for printing ticket
+                        askPrintTicket(paidTicketList);
+                    }
 
                     // leave the page
                     break;
@@ -57,7 +67,7 @@ public class PurchaseTicketPage extends Page {
 
     private int enterTicketNum() {
         // ask how many seat user want to book
-        System.out.printf("Enter the number of seat you want to book:");
+        System.out.printf("\nEnter the number of seat you want to book:");
         int num = getInputStream().nextInt();
         getInputStream().nextLine();
 
@@ -149,6 +159,7 @@ public class PurchaseTicketPage extends Page {
         // movie info
         System.out.printf(
             "\n"+
+            "--------------------------\n"+
             "You are buying ticket for:\n"+
             "Movie:\t\t%s\n"+
             "Cinema:\t\t%s\n"+
@@ -165,10 +176,10 @@ public class PurchaseTicketPage extends Page {
                 "Type:\t%s\n"+
                 "Price:\t%s\n"+
                 "\n"
-            , ticketIdx, selectedSeatList.get(ticketIdx), selectedTicketType.get(ticketIdx).getType(), selectedTicketType.get(ticketIdx).getPrice());
+            , ticketIdx+1, selectedSeatList.get(ticketIdx), selectedTicketType.get(ticketIdx).getType(), selectedTicketType.get(ticketIdx).getPrice());
         }
 
-        System.out.println("Confirm Ticket? (Y-Yes, N-No)");
+        System.out.printf("Confirm Ticket? (Y-Yes, N-No)");
         String input = "";
 
         while(true) {
@@ -178,6 +189,25 @@ public class PurchaseTicketPage extends Page {
             }
             else if(input.equals("N")) {
                 return false;
+            }
+        }
+    }
+
+    private void askPrintTicket(ArrayList<Ticket> paidTickets) {
+        System.out.printf("\nPrint Ticket? (Y-Yes, N-No)");
+        String input = "";
+
+        while(true) {
+            input = getInputStream().nextLine();
+            if(input.equals("Y")) {
+                PrintTicket printTicket = new PrintTicket();
+                for(Ticket ticket : paidTickets) {
+                    printTicket.print(ticket);
+                }
+                return;
+            }
+            else if(input.equals("N")) {
+                return;
             }
         }
     }

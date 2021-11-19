@@ -5,15 +5,19 @@ import java.util.Collections;
 
 public class HistoryManageAction extends DbAction {
 	
+	ArrayList<PurchaseHistory> historyList;
+
+	HistoryManageAction() {
+		historyList = getDatabase().getPurchaseHistoryList();
+	}
+
 	public void addHistory(PurchaseHistory history) {
-		getDatabase().getPurchaseHistoryList().add(history);	
-	    Collections.sort(getDatabase().getPurchaseHistoryList());
+		historyList.add(history);	
+	    Collections.sort(historyList);
     }
 	
-	  public int getPurchaseHistorySize() {
-	  return getDatabase().getPurchaseHistoryList().size();
+	public int getPurchaseHistorySize() {
+		return historyList.size();
 	}
-	
-	
 }
 
