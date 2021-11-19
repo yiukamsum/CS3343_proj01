@@ -1,7 +1,9 @@
 package obj;
 
 public class Alipay implements PaymentMethod {
-	public boolean pay() {
-		return true;
+	@Override
+	public void pay(double amount) {
+		// TODO Auto-generated method stub
+		
 	}
 }

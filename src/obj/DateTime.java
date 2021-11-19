@@ -26,9 +26,9 @@ public class DateTime implements Comparable<DateTime>, CatalogItem{
     @Override
     public String toString(){
         if(hour == 0 && minute == 0){
-            return "Today is " + year + "-" + month + "-" + day + "\n";
+            return year + "-" + month + "-" + day;
         }else{
-            return "The time now is " + year + "-" + month + "-" + day + " " + hour + ":" + minute + "\n";
+            return year + "-" + month + "-" + day + " " + hour + ":" + minute;
         }
     }
 

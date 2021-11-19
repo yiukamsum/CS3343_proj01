@@ -23,6 +23,14 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
         return this.cinema;
     }
 
+    public Movie getMovie() {
+        return this.movie;
+    }
+
+    public Theatre getTheatre() {
+        return this.theatre;
+    }
+
     public void takeSeat(String seat){
         int row = (int)seat.charAt(0)-65;
         int col = (int)seat.charAt(1)-(int)('0');
@@ -76,15 +84,29 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
 
     @Override 
     public String toCatalogItemString(){
-        String output = "";
-        output = output + "Cinema: " + cinema.getName() + "\n";
-        output = output + "Theatre ID: " + theatre.getTheatreID() + "\n";
-        output = output + "Movie: " + movie.getName() + "\n";
-        output = output + "Start Time: " + startTime.toCatalogItemString() + "\n";
-        output = output + "End Time: " + endTime.toCatalogItemString() + "\n";
-    
-        return output;
+        return String.format(
+            "\tMovie: \t\t%s\n"+
+            "\tCinema: \t%s\n"+
+            "\tTheatre: \t%s\n"+
+            "\tStart time: \t%s\n"+
+            "\tEnd time: \t%s\n"
+        , movie.getName(), cinema.getName(), theatre.getTheatreID(), startTime.toString(), endTime.toString());
+    }
 
+    public String getMovieName() {
+        return this.movie.getName();
+    }
+
+    public String getCinemaName() {
+        return this.cinema.getName();
+    }
+
+    public int getTheatreID() {
+        return this.theatre.getTheatreID();
+    }
+
+    public String getStartTime() {
+        return this.startTime.toString();
     }
    
 }
