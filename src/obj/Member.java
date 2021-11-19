@@ -16,10 +16,6 @@ public class Member extends Account {
 		return this.memberId;
 	}
 
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
-	}
-
 	public String getEmail() {
 		return this.email;
 	}
@@ -28,7 +24,4 @@ public class Member extends Account {
 		this.email = email;
 	}
 
-	public ArrayList<Discount> getDiscountCode(){
-		return null;
-	}
 }
