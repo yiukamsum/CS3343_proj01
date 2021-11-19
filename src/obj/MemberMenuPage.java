@@ -14,7 +14,7 @@ public class MemberMenuPage extends Page {
         while(action != -1) {
             System.out.printf(
                 "\n====Member Menu====\n"+
-                "Enter -1 to exit system\n"
+                "Enter -1 to logout\n"
             );
             
             action = getInputStream().nextInt();

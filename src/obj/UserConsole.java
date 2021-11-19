@@ -2,17 +2,15 @@ package obj;
 
 import java.util.Scanner;
 
-public class UserConsole implements Console {
+public class UserConsole {
 
     // the scanner for accpet user input
     private final static Scanner userInputStream = new Scanner(System.in);
 
-    @Override
     public Scanner getInputStream() {
         return userInputStream;
     };
 
-    @Override
     public void start() {
         int input = 0;
         do {
