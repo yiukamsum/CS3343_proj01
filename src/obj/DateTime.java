@@ -60,7 +60,7 @@ public class DateTime implements Comparable<DateTime>, CatalogItem{
 
     @Override
     public String toCatalogItemString(){
-        return "The time is" + year + "-" + month + "-" + day + " " + hour + ":" + minute + "\n";
+        return year + "-" + month + "-" + day + " " + hour + ":" + minute + "\n";
     }
 
 }
