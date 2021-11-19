@@ -14,12 +14,16 @@ public class MemberMenuPage extends Page {
         while(action != -1) {
             System.out.printf(
                 "\n====Member Menu====\n"+
+                "(1)Purchase Ticket\n"+
+                "------------------\n"+
                 "Enter -1 to logout\n"
             );
             
             action = getInputStream().nextInt();
 
             switch(action) {
+                case 1:
+                    new PurchaseTicketPage((MemberConsole)getConsole()).display();
                 case -1:
                     break;
                 default:

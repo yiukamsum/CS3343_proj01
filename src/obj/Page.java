@@ -13,6 +13,10 @@ abstract class Page {
         return this.console.getInputStream();
     }
 
+    public UserConsole getConsole() {
+        return this.console;
+    }
+
     // entry of a page
     abstract public void display();
 }
