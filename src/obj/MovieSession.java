@@ -23,14 +23,23 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
         return this.cinema;
     }
 
-    public void takeSeat(int row, int col){
+    public void takeSeat(String seat){
+        int row = (int)seat.charAt(0)-65;
+        int col = (int)seat.charAt(1)-(int)('0');
+
         if(vancacy[row][col] == false){
             vancacy[row][col] = true;
-            System.out.println("Book the seat successfully!");
+            // System.out.println("Book the seat successfully!");
         }else{
-            System.out.println("The seat is already booked!");
+            // System.out.println("The seat is already booked!");
         }
 
+    }
+
+    public boolean isSeatEmpty(String seat) {
+        int row = (int)seat.charAt(0)-65;
+        int col = (int)seat.charAt(1)-(int)('0');
+        return !vancacy[row][col];
     }
 
     public boolean isFull(){
@@ -51,11 +60,10 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
                 if(vancacy[i][j] == false){
                     System.out.printf("%c%d ", 65 + i, j);
                 }else{
-                    System.out.printf("   ");
+                    System.out.printf("## ");
                 }
             }
             System.out.println("");
-       
         }
     }
 
