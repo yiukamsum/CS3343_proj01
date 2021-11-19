@@ -16,7 +16,7 @@ public class Database {
         memberList.add(new Member("1", "Peter", "123@gmail.com", "123"));
     }
 
-    public static Database connectDB() { 
+    public static Database connectDB(DbAction action) { 
         return DBinstance;
     }
 

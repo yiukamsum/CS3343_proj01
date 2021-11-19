@@ -1,8 +1,6 @@
 package obj;
 
-import java.util.Scanner;
-
-public abstract class Login {
+public abstract class Login extends DbAction {
 
     /////////////////////
     /* Abstract Method */
