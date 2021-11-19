@@ -12,14 +12,14 @@ public abstract class Login {
     ///////////////////
     /* Public Method */
     // RETURN account object if login success, else return null
-    public Account login(Scanner inStream) {
+    public Account login(UserConsole console) {
         String accountName;
         String password;
 
         Account loginAccount = null;
 
         // for skipping the \n in the buffer
-        inStream.nextLine();
+        console.getInputStream().nextLine();
 
         System.out.printf("\n====Login====\n");
 
@@ -27,9 +27,9 @@ public abstract class Login {
             System.out.printf("(Enter -1 on both username and password to leave)\n");
 
             System.out.printf("Account Name: ");
-            accountName = inStream.nextLine();
+            accountName = console.getInputStream().nextLine();
             System.out.printf("Password: ");
-            password    = inStream.nextLine();
+            password    = console.getInputStream().nextLine();
 
             /* check if -1 -1 is entered */
             if(accountName.equals("-1") && password.equals("-1")) { 

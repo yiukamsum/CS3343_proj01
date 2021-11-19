@@ -17,7 +17,7 @@ public class MemberConsole extends UserConsole {
     @Override
     public void start() {
         // ask member to login
-        member = (Member) new MemberLogin().login(getInputStream());
+        member = (Member) new MemberLogin().login(this);
         // user cancel login, end the console
         if(member == null) { return; }
 

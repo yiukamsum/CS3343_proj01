@@ -14,7 +14,7 @@ public class AdminConsole extends UserConsole {
     @Override
     public void start() {
         // ask member to login
-        admin = (Admin) new AdminLogin().login(getInputStream());
+        admin = (Admin) new AdminLogin().login(this);
         // user cancel login
         if(admin == null) { return; }
 
