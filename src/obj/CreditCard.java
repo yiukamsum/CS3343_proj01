@@ -1,3 +1,5 @@
+package obj;
+
 public class CreditCard implements PaymentMethod{
     
     public boolean pay(double amount){
