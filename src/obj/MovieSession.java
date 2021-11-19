@@ -68,8 +68,8 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
         output = output + "Cinema: " + cinema.getName() + "\n";
         output = output + "Theatre ID: " + theatre.getTheatreID() + "\n";
         output = output + "Movie: " + movie.getName() + "\n";
-        output = output + "Start Time" + startTime.toCatalogItemString() + "\n";
-        output = output + "End Time" + endTime.toCatalogItemString() + "\n";
+        output = output + "Start Time: " + startTime.toCatalogItemString() + "\n";
+        output = output + "End Time: " + endTime.toCatalogItemString() + "\n";
     
         return output;
 
