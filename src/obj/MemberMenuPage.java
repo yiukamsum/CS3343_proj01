@@ -20,6 +20,7 @@ public class MemberMenuPage extends Page {
             );
             
             action = getInputStream().nextInt();
+            getInputStream().nextLine();
 
             switch(action) {
                 case 1:
