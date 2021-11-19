@@ -9,7 +9,7 @@ public class PrintTicket {
 
     public void print(){
         System.out.println("Ticket Type: " +  ticket.getType());
-        System.out.println("Ticket Price: " + ticket.getType());
+        System.out.println("Ticket Price: " + ticket.getPrice());
         System.out.println(ticket.getSession().toCatalogItemString());
     }
 }
