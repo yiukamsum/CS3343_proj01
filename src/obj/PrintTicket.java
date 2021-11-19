@@ -1,3 +1,5 @@
+package obj;
+
 public class PrintTicket {
     private Ticket ticket;
 

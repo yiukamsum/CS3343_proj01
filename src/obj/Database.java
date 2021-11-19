@@ -2,7 +2,7 @@ package obj;
 
 import java.util.ArrayList;
 
-// Singlaton
+// Singleton
 public class Database {
     private final static Database DBinstance = new Database();
 
@@ -10,6 +10,7 @@ public class Database {
     private ArrayList<Member>           memberList;
     private ArrayList<Cinema>           cinemaList;
     private ArrayList<Movie>            movieList;
+    private ArrayList<PurchaseHistory>  historyList;
     private Admin                       admin;
 
     private Database() {
@@ -42,7 +43,10 @@ public class Database {
     public ArrayList<MovieSession> getMovieSessionList() {
         return this.sessionList;
     }
-
+    
+    public ArrayList<PurchaseHistory> getPurchaseHistoryList() {
+        return this.historyList;
+    }
 
     public Member getMember(String accountName, String password) {
         for(Member member : memberList) {
