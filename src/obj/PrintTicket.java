@@ -1,0 +1,13 @@
+public class PrintTicket {
+    private Ticket ticket;
+
+    public PrintTicket(Ticket ticket){
+        this.ticket = ticket;
+    }
+
+    public void print(){
+        System.out.println("Ticket Type: " +  ticket.getType());
+        System.out.println("Ticket Price: " + ticket.getType());
+        System.out.println(ticket.getSession().toCatalogItemString());
+    }
+}
