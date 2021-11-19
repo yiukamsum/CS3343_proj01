@@ -2,7 +2,7 @@ package obj;
 
 public class MovieSession implements Comparable<MovieSession>, CatalogItem{
 
-    private String sessionID;
+    private int sessionID;
     private Cinema cinema;
     private Theatre theatre;
     private Movie movie;
@@ -10,13 +10,17 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
     private DateTime endTime;
     private boolean vancacy [][] = new boolean[10][10];
 
-    public MovieSession(String sessionID, Cinema cinema, Theatre theatre, Movie movie, DateTime startTime, DateTime endTime ){
+    public MovieSession(int sessionID, Cinema cinema, Theatre theatre, Movie movie, DateTime startTime, DateTime endTime ){
         this.sessionID = sessionID;
         this.cinema = cinema;
         this.theatre = theatre;
         this.movie = movie;
         this.startTime = startTime;
         this.endTime = endTime;     
+    }
+
+    public Cinema getCinema() {
+        return this.cinema;
     }
 
     public void takeSeat(int row, int col){
@@ -59,7 +63,7 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
 
     @Override 
     public int compareTo(MovieSession session){
-        return this.sessionID.compareTo(session.sessionID);
+        return this.sessionID - session.sessionID;
     }
 
     @Override 

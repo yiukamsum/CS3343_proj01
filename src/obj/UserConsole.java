@@ -39,4 +39,6 @@ public class UserConsole {
             }
         } while(input != -1);        
     }
+
+    public void clearConsole() {}
 }

@@ -7,6 +7,9 @@ abstract class Page {
 
     public Page(UserConsole console) {
         this.console = console;
+
+        //clear the console, not work now
+        console.clearConsole();
     }
 
     public Scanner getInputStream() {

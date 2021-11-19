@@ -4,12 +4,12 @@ import java.util.*;
 
 public class Movie implements Comparable<Movie>, CatalogItem{
 
-    private String movieID;
+    private int movieID;
     private String name;
     private DateTime releaseDate;
     private ArrayList<String> actorList = new ArrayList<String>();
 
-    public Movie(String movieID, String name, DateTime releaseDate, ArrayList<String> actorList){
+    public Movie(int movieID, String name, DateTime releaseDate, ArrayList<String> actorList){
         this.movieID = movieID;
         this.name = name;
         this.releaseDate = releaseDate;
@@ -22,7 +22,7 @@ public class Movie implements Comparable<Movie>, CatalogItem{
 
     @Override
     public int compareTo(Movie movie){
-        return this.movieID.compareTo(movie.movieID);
+        return this.movieID - movie.movieID;
     }
     
     @Override

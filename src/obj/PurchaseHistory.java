@@ -1,11 +1,13 @@
+package obj;
+
 public class PurchaseHistory implements Comparable<PurchaseHistory>, CatalogItem{
     
     private Member member;
     private Ticket ticket;
     private DateTime purchaseDate;
-    private String historyID;
+    private int historyID;
 
-    public PurchaseHistory(String historyID, Member member, Ticket ticket, DateTime purchaseDate){
+    public PurchaseHistory(int historyID, Member member, Ticket ticket, DateTime purchaseDate){
         this.historyID = historyID;
         this.member = member;
         this.ticket = ticket;
@@ -14,7 +16,7 @@ public class PurchaseHistory implements Comparable<PurchaseHistory>, CatalogItem
 
     @Override 
     public int compareTo(PurchaseHistory history){
-        return this.historyID.compareTo(history.historyID);
+        return this.historyID - history.historyID;
     }
 
     @Override

@@ -3,13 +3,13 @@ package obj;
 import java.util.*;
 
 public class Cinema implements Comparable<Cinema>, CatalogItem{
-	private String cinemaID;
+	private int cinemaID;
 	private String location;
 	private String name;
 	private String phoneNo;
 	private ArrayList<Theatre> theatreList = new ArrayList<Theatre>();
 	
-	public Cinema(String cinemaID, String location, String name, String phoneNo) {
+	public Cinema(int cinemaID, String location, String name, String phoneNo) {
 		this.cinemaID = cinemaID;
 		this.location = location;
 		this.name = name;
@@ -34,10 +34,10 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 	    Collections.sort(theatreList);
 	}
 
-	public Theatre getTheatre(String theatreID) {
+	public Theatre getTheatre(int theatreID) {
 		if(!theatreList.isEmpty()){
 		    for(Theatre t: theatreList){
-			if(t.getTheatreID().equals(theatreID))	     
+			if(t.getTheatreID() == theatreID)	     
 			    return t;	
                 
             }
@@ -48,7 +48,7 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 		
 	@Override
 	public int compareTo(Cinema cinema){
-	    return this.cinemaID.compareTo(cinema.cinemaID);
+	    return this.cinemaID - cinema.cinemaID;
 	}
 	
 	@Override
