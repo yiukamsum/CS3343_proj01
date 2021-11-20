@@ -45,11 +45,11 @@ public class viewHistoryCatalogPage extends Page{
         }while(input != -1);
     }
 
-    public void showHistoryIDList(){
+    private void showHistoryIDList(){
         historyCatalog.show();
     }
 
-    public void searchPurchaseHistory(int historyID){
+    private void searchPurchaseHistory(int historyID){
 
         for (PurchaseHistory p: historyCatalog){
             if(p.getHistoryID() == historyID){
