@@ -22,8 +22,8 @@ public class viewHistoryCatalogPage extends Page{
 
         int input = 0;
 
-        do {
-            System.out.printf("Enter 1 to show the history ID list and 2 to search purchase history (-1 to leave)\n" );
+        do {       
+            System.out.printf("Enter 1 to show the history list and 2 to search purchase history (-1 to leave)\n" );
             input = getInputStream().nextInt();
 
             if(input == -1) { break;}
@@ -31,7 +31,11 @@ public class viewHistoryCatalogPage extends Page{
             else if(input == 2){
                 System.out.printf("Please enter the history ID: (-1 to leave)\n" );
                 input = getInputStream().nextInt();
-                searchPurchaseHistory(input);
+                
+                if(input != -1)
+                    searchPurchaseHistory(input);
+                else
+                    break;
             }
 
         }while(input != -1);
