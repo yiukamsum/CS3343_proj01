@@ -25,12 +25,13 @@ public class PurchaseHistory implements Comparable<PurchaseHistory>, CatalogItem
 
     @Override
     public String toCatalogItemString(){
-        String output = "";
-        output = output + "History ID: " + historyID + "\n";
-        output = output + "Member ID: " + member.getMemberId() + "\n";
-        output = output + "Ticket Type: " + ticket.getType() + "\n";
-        output = output + "Purchase Date: " + purchaseDate.toCatalogItemString() + "\n";
 
-        return output;
-    }
+        return String.format(
+			"\tHistory ID: \t\t%d\n"+
+			"\tMember ID: \t%d\n"+
+			"\tTicket Type: \t%s\n"+
+            "\tTicket Price: \t%f\n"+
+			"\tPurchase Date: \t%s\n"
+		, historyID, member.getMemberId(), ticket.getType(), ticket.getPrice(), purchaseDate.toString());
+	}
 }
