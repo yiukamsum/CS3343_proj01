@@ -9,10 +9,10 @@ public class viewHistoryCatalogPage extends Page{
     public viewHistoryCatalogPage(MemberConsole console) {
         super(console);
 
-        ArrayList<PurchaseHistory> historyList = new HistoryManageAction().getHistory();
-        historyCatalog = new Catalog<PurchaseHistory>(historyList);
+        this.member = console.getMember();
 
-        member = console.getMember();
+        ArrayList<PurchaseHistory> historyList = new HistoryManageAction().getHistory(member.getMemberId());
+        historyCatalog = new Catalog<PurchaseHistory>(historyList);
     }
 
     @Override
@@ -46,23 +46,7 @@ public class viewHistoryCatalogPage extends Page{
     }
 
     public void showHistoryIDList(){
-
-        int index = 0;
-        for (PurchaseHistory p: historyCatalog){
-            if(p.getMemberID() == member.getMemberId()){
-                if(index == 0){ 
-                    System.out.printf("The purchase history ID list: \n");
-                }
-
-                System.out.printf("%d. History ID: %d, Purchase Date: %s \n", index, p.getHistoryID(), p.getPurchaseDate().toString());
-                index++;
-            } 
-        }
-
-        if(index == 0){
-            System.out.println("No History Record!");
-        }
-           
+        historyCatalog.show();
     }
 
     public void searchPurchaseHistory(int historyID){

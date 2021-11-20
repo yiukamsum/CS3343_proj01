@@ -18,6 +18,10 @@ public class PurchaseHistory implements Comparable<PurchaseHistory>, CatalogItem
         return historyID;
     }
 
+    public int getMemberID() {
+        return this.member.getMemberId();
+    }
+
     @Override 
     public int compareTo(PurchaseHistory history){
         return this.historyID - history.historyID;
