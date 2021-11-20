@@ -20,10 +20,6 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
         this.vancacy = new boolean[theatre.getRowNum()][theatre.getColNum()];
     }
 
-    public Cinema getCinema() {
-        return this.cinema;
-    }
-
     public Movie getMovie() {
         return this.movie;
     }
@@ -109,6 +105,10 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
 
     public String getStartTime() {
         return this.startTime.toString();
+    }
+
+    public int getCinemaID() {
+        return this.cinema.getCinemaID();
     }
    
 }

@@ -6,41 +6,27 @@ public class CinemaManageAction extends DbAction{
 
     private ArrayList<Cinema> cinemaList;
 
-    public CinemaManagerAction(Admin admin) {
-
-        try{
-            if(admin.equals(Admin.getInstance())){
-                cinemaList = getDatabase().getCinemaList();
-            }else{
-                throw new SecurityException("You are not authorized to do!");
-            }
-        }catch (SecurityException e){
-            System.out.println(e.getMessage());            
-        }
-
+    public CinemaManageAction(Admin admin) {
+        cinemaList = getDatabase().getCinemaList();
     }
 
-    public void addCinema(Cinema cinema){
-        if(!cinemaList.contains(cinema)){
-            cinemaList.add(cinema);
-            System.out.println("Added a cinema.");
-        }else{
-            System.out.println("The cinema is already existed!");
+    public Cinema createCinemaRecord(String name, String location, String phoneNo, ArrayList<Theatre> theatreList) {
+        int cinemaID = cinemaList.size()+1;
+        Cinema cinema = new Cinema(cinemaID, location, name, phoneNo);
+        for(Theatre theatre : theatreList) {
+            cinema.addTheatre(theatre);
         }
-
+        cinemaList.add(cinema);
+        return cinema;
     }
 
     public void removeCinema(int cinemaID){
         for(Cinema c: cinemaList){
             if(c.getCinemaID() == cinemaID){
                 cinemaList.remove(c);
-                System.out.println("Removed the cinema.");
                 return;
             }
-        }
-
-        System.out.println("Cinema does not exist!");
-        
+        }        
     }
 
     public void addTheatre(int cinemaID, Theatre theatre){

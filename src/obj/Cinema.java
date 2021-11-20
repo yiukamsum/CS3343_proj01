@@ -20,18 +20,20 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 		return this.name;
 	}
 
+	public int getCinemaID() {
+		return this.cinemaID;
+	}
+
 	public void addTheatre(Theatre theatre) {
 	    if(!theatreList.isEmpty()){
 	        for(Theatre t: theatreList){
 				if(t == theatre){
-					System.out.println("The theatre is already existed!");
 					return;
 				}
 			}
 	    }
 
 	    theatreList.add(theatre);	
-	    System.out.println("Added a theatre!");
 	    Collections.sort(theatreList);
 	}
 
@@ -70,7 +72,7 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 	@Override
     public String toCatalogItemString(){
 		return String.format(
-			"\tCinema ID: \t\t%d\n"+
+			"\tCinema ID: \t%d\n"+
 			"\tCinema Name: \t%s\n"+
 			"\tLocation: \t%s\n"+
 			"\tPhone Number: \t%s\n"

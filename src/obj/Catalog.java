@@ -22,8 +22,7 @@ public class Catalog<T extends CatalogItem> {
     }
 
     public T getItem(int idx) {
-        if(idx >= itemList.size()) {
-            System.out.println("Wrong number");
+        if(idx >= itemList.size() || idx < 0) {
             return null;
         }
         return itemList.get(idx);

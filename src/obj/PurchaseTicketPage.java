@@ -31,43 +31,51 @@ public class PurchaseTicketPage extends Page {
 
             MovieSession selectSession = sessionCatalog.getItem(input-1);
 
-            if(selectSession != null) {
-                //print seat plan
-                System.out.println("---Seat Plan---");
-                selectSession.printSeat();
-
-                // ask how many ticket
-                int ticketNum   = enterTicketNum();
-                
-                // ask to select ticket type
-                ArrayList<TicketType> selectedTicketType    = selectTicketType(ticketNum);
-
-                // ask to select seat
-                ArrayList<String> selectedSeatList          = selectSeat(ticketNum, selectSession);
-
-                // create ticket list
-                ArrayList<Ticket> ticketList                = createTickets(selectSession, ticketNum, selectedTicketType, selectedSeatList);
-
-                // confirm msg
-                boolean isConfirm = confirmSelection(selectSession, ticketList);
-
-                if(isConfirm) {
-                    PurchaseTicket purchaseTicket = new PurchaseTicket((MemberConsole)getConsole());
-
-                    // process payment
-                    boolean isPurchaseSuccess = purchaseTicket.purchase(selectSession, ticketList);
-
-                    /* pay success */
-                    if(isPurchaseSuccess) {
-                        // take seats
-                        takeSeats(selectSession, selectedSeatList);
-                        // ask for printing ticket
-                        askPrintTicket(ticketList);
-                    }
-
-                    break; // leave the page
-                }
+            /* wrong index */
+            if(selectSession == null) { 
+                System.out.println("Wrong number"); 
+                continue; 
             }
+
+
+            ///////////////////////
+            /* enter the session */
+            //print seat plan
+            System.out.println("---Seat Plan---");
+            selectSession.printSeat();
+
+            // ask how many ticket
+            int ticketNum   = enterTicketNum();
+            
+            // ask to select ticket type
+            ArrayList<TicketType> selectedTicketType    = selectTicketType(ticketNum);
+
+            // ask to select seat
+            ArrayList<String> selectedSeatList          = selectSeat(ticketNum, selectSession);
+
+            // create ticket list
+            ArrayList<Ticket> ticketList                = createTickets(selectSession, ticketNum, selectedTicketType, selectedSeatList);
+
+            // confirm msg
+            boolean isConfirm = confirmSelection(selectSession, ticketList);
+
+            if(isConfirm) {
+                PurchaseTicket purchaseTicket = new PurchaseTicket((MemberConsole)getConsole());
+
+                // process payment
+                boolean isPurchaseSuccess = purchaseTicket.purchase(selectSession, ticketList);
+
+                /* pay success */
+                if(isPurchaseSuccess) {
+                    // take seats
+                    takeSeats(selectSession, selectedSeatList);
+                    // ask for printing ticket
+                    askPrintTicket(ticketList);
+                }
+
+                break; // leave the page
+            }
+
         } while(input != -1);
     }
 
