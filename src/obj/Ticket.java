@@ -3,10 +3,12 @@ package obj;
 public class Ticket {
 	private TicketType type;
 	private MovieSession session;
+	private String seat;
 	
-	public Ticket(TicketType type, MovieSession session) {
+	public Ticket(TicketType type, MovieSession session, String seat) {
 		this.type = type;
 		this.session = session;
+		this.seat = seat;
 	}
 	
 	public String getType() {
@@ -21,5 +23,7 @@ public class Ticket {
 		return session;
 	}
 	
-	
+	public String getSeat() {
+		return this.seat;
+	}
 }
