@@ -19,6 +19,10 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 	public String getName() {
 		return this.name;
 	}
+	
+        public int getCinemaID() {
+		return this.cinemaID;
+	}
 
 	public int getCinemaID() {
 		return this.cinemaID;
@@ -70,7 +74,7 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 	}
 	
 	@Override
-    public String toCatalogItemString(){
+        public String toCatalogItemString(){
 		return String.format(
 			"\tCinema ID: \t%d\n"+
 			"\tCinema Name: \t%s\n"+

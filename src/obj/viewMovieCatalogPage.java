@@ -2,15 +2,15 @@ package obj;
 
 import java.util.ArrayList;
 
-public class viewMovieCatalogPage extends page {
+public class viewMovieCatalogPage extends Page {
 
     private Catalog<Movie> movieCatalog;
 
     public viewMovieCatalogPage(MemberConsole console) {
         super(console);
 
-        ArrayList<PurchaseHistory> movieList = new getMovieAction().getMovieList();
-        movieCatalog = new Catalog<PurchaseHistory>(movieList);
+        ArrayList<Movie> movieList = new getMovieAction().getMovieList();
+        movieCatalog = new Catalog<Movie>(movieList);
 
     }
     
@@ -21,7 +21,6 @@ public class viewMovieCatalogPage extends page {
 
         int input = 0;
         String movieName;
-        showHistoryIDList();
 
         do {
              System.out.printf(
@@ -32,12 +31,12 @@ public class viewMovieCatalogPage extends page {
             input = getInputStream().nextInt();
 
             if(input == -1) { break;}
-            else if(input == 1){showHistoryIDList();}
+            else if(input == 1){showMovieList();}
             else if(input == 2){
                     System.out.printf("Please enter movie ID: \n" );
                     input = getInputStream().nextInt();
                     searchMovieByID(input);}
-            else if(input = 3){
+            else if(input == 3){
                     System.out.printf("Please enter movie name: \n" );
                     movieName = getInputStream().nextLine();
                     searchMovieByName(movieName);
@@ -49,20 +48,28 @@ public class viewMovieCatalogPage extends page {
     public void showMovieList(){
 
         int i = 0;
-        for(Movie m: movieCatalog){
+        Movie m;
+        while(movieCatalog.getItem(i) != null){
+            m = movieCatalog.getItem(i);
             System.out.printf("%d. Cinema ID: %d, Cinema name: %s \n", i, m.getMovieID(), m.getName());
             i++;
         }
 
     }
 
+
     public void searchMovieByID(int movieID){
 
-        for(Movie m: movieCatalog){
+        int i = 0;
+        Movie m;
+        
+        while(movieCatalog.getItem(i) != null){
+            m = movieCatalog.getItem(i);
             if(m.getMovieID() == movieID){
                 m.toCatalogItemString();
                 return;
             }
+            i++;
                
         }
 
@@ -71,12 +78,17 @@ public class viewMovieCatalogPage extends page {
 
     public void searchMovieByName(String movieName){
 
-        for(Movie m: movieCatalog){
-            if(m.getMovieName().equals(movieName)){
+        int i = 0;
+        Movie m;
+        
+        while(movieCatalog.getItem(i) != null){
+            m = movieCatalog.getItem(i);
+            if(m.getName().equals(movieName)){
                 m.toCatalogItemString();
                 return;
             }
-               
+
+            i++;             
         }
 
         System.out.println("Cannot find the movie!");
