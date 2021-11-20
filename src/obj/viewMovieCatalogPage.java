@@ -24,26 +24,24 @@ public class viewMovieCatalogPage extends page {
         showHistoryIDList();
 
         do {
-            System.out.printf("Enter 1 to show the movie list and 2 to search movie: (-1 to leave)\n" );
+             System.out.printf(
+                "(1)Show Movie list\n"+          
+                "(2)Search Movie by movie ID\n"+
+                "(3)Search Movie by movie name\n"+
+                "(-1)Leave this page\n");
             input = getInputStream().nextInt();
 
             if(input == -1) { break;}
             else if(input == 1){showHistoryIDList();}
             else if(input == 2){
-
-                System.out.printf("Enter 1 to search the movie by ID and 2 to search movie by name: (-1 to leave)\n" );
-                input = getInputStream().nextInt();
-
-                if(input = 1){
                     System.out.printf("Please enter movie ID: \n" );
                     input = getInputStream().nextInt();
-                    searchMovieByID(input);
-                }else if(input = 2){
+                    searchMovieByID(input);}
+            else if(input = 3){
                     System.out.printf("Please enter movie name: \n" );
                     movieName = getInputStream().nextLine();
                     searchMovieByName(movieName);
-                }else{break;}
-            }
+            }else{System.out.println("invalid input!" );}
 
         }while(input != -1);
     }
