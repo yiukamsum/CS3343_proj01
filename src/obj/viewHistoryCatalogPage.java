@@ -23,20 +23,24 @@ public class viewHistoryCatalogPage extends Page{
         int input = 0;
 
         do {       
-            System.out.printf("Enter 1 to show the history list and 2 to search purchase history (-1 to leave)\n" );
+            System.out.printf(
+                "(1)Show Purchase History list\n"+          
+                "(2)Search Purchase History\n"+
+                "(-1)Leave this page\n");
             input = getInputStream().nextInt();
 
             if(input == -1) { break;}
             else if(input == 1){showHistoryIDList();}
             else if(input == 2){
-                System.out.printf("Please enter the history ID: (-1 to leave)\n" );
+                System.out.printf("Please enter the purchase history ID: \n" );
                 input = getInputStream().nextInt();
                 
                 if(input != -1)
                     searchPurchaseHistory(input);
                 else
                     break;
-            }
+            }else
+                System.out.println("Invalid input!");
 
         }while(input != -1);
     }
@@ -50,7 +54,7 @@ public class viewHistoryCatalogPage extends Page{
                     System.out.printf("The purchase history ID list: \n");
                 }
 
-                System.out.printf("%d. History ID: %d, Purchase Date: %s \n", index, p.getHistoryID(), p.getPurchaseDate());
+                System.out.printf("%d. History ID: %d, Purchase Date: %s \n", index, p.getHistoryID(), p.getPurchaseDate().toString());
                 index++;
             } 
         }
