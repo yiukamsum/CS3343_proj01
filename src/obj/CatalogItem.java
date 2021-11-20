@@ -1,5 +1,5 @@
 package obj;
 
-public interface CatalogItem{
+public interface CatalogItem {
     public String toCatalogItemString();
 }

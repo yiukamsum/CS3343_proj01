@@ -8,7 +8,7 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
     private Movie movie;
     private DateTime startTime;
     private DateTime endTime;
-    private boolean vancacy [][] = new boolean[10][10];
+    private boolean vancacy[][];
 
     public MovieSession(int sessionID, Cinema cinema, Theatre theatre, Movie movie, DateTime startTime, DateTime endTime ){
         this.sessionID = sessionID;
@@ -17,6 +17,7 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
         this.movie = movie;
         this.startTime = startTime;
         this.endTime = endTime;     
+        this.vancacy = new boolean[theatre.getRowNum()][theatre.getColNum()];
     }
 
     public Cinema getCinema() {
@@ -51,8 +52,8 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
     }
 
     public boolean isFull(){
-        for(int i = 0; i < 10; i++){
-            for(int j = 0; j < 10; j++){
+        for(int i = 0; i < this.theatre.getRowNum(); i++){
+            for(int j = 0; j < this.theatre.getColNum(); j++){
                 if (vancacy[i][j] == false){
                     return false;
                 }
@@ -64,8 +65,8 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
 
     public void printSeat(){
         System.out.println("[Screen Here]");
-        for(int i = 0; i < 10; i++){       
-            for(int j = 0; j < 10; j++){
+        for(int i = 0; i < this.theatre.getRowNum(); i++){       
+            for(int j = 0; j < this.theatre.getColNum(); j++){
                 if(vancacy[i][j] == false){
                     System.out.printf("%c%d ", 65 + i, j);
                 }else{

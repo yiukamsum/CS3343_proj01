@@ -14,7 +14,7 @@ public class HistoryManageAction extends DbAction {
 	public void addHistory(PurchaseHistory history) {
 		historyList.add(history);	
 	    Collections.sort(historyList);
-        }
+    }
 	
 	public int getPurchaseHistorySize() {
 		return historyList.size();
@@ -24,6 +24,7 @@ public class HistoryManageAction extends DbAction {
 		return historyList;
 	}
 
+	// get history list for a member
 	public ArrayList<PurchaseHistory> getHistory(int memberId) {
 		ArrayList<PurchaseHistory> memberHistory = new ArrayList<>();
 		for(PurchaseHistory history : this.historyList) {

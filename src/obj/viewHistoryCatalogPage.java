@@ -25,21 +25,22 @@ public class viewHistoryCatalogPage extends Page{
         do {       
             System.out.printf(
                 "(1) Show Purchase History list\n"+          
-                "(2) Search Purchase History\n"+
+                // "(2) Search Purchase History\n"+
                 "(-1) Leave this page\n");
             input = getInputStream().nextInt();
 
             if(input == -1) { break;}
             else if(input == 1){showHistoryIDList();}
-            else if(input == 2){
-                System.out.printf("Please enter the purchase history ID: \n" );
-                input = getInputStream().nextInt();
+            // else if(input == 2){
+            //     System.out.printf("Please enter the purchase history ID: \n" );
+            //     input = getInputStream().nextInt();
                 
-                if(input != -1)
-                    searchPurchaseHistory(input);
-                else
-                    break;
-            }else
+            //     if(input != -1)
+            //         searchPurchaseHistory(input);
+            //     else
+            //         break;
+            // }
+            else
                 System.out.println("Invalid input!");
 
         }while(input != -1);
@@ -49,17 +50,17 @@ public class viewHistoryCatalogPage extends Page{
         historyCatalog.show();
     }
 
-    private void searchPurchaseHistory(int historyID){
+    // private void searchPurchaseHistory(int historyID){
 
-        for (PurchaseHistory p: historyCatalog){
-            if(p.getHistoryID() == historyID){
-                System.out.println("Result: ");
-                p.toCatalogItemString();
-                break;
-            } 
-        }
+    //     for (PurchaseHistory p: historyCatalog){
+    //         if(p.getHistoryID() == historyID){
+    //             System.out.println("Result: ");
+    //             p.toCatalogItemString();
+    //             break;
+    //         } 
+    //     }
          
-        System.out.println("Cannot find the history record!");
-    }
+    //     System.out.println("Cannot find the history record!");
+    // }
 
 }

@@ -2,9 +2,10 @@ package obj;
 
 import java.util.ArrayList;
 
+// Any subClass of CatalogItem
 public class Catalog<T extends CatalogItem> {
-    // ArrayList of any class that extends CatalogItem
-    private ArrayList<T> itemList;
+
+    private ArrayList<T> itemList;  // for storing items after filter
     
     public Catalog(ArrayList<T> itemList) {
         this.itemList = itemList;
@@ -15,7 +16,7 @@ public class Catalog<T extends CatalogItem> {
             System.out.println("No Item");
         }
 
-        for(int idx = 0; idx < this.itemList.size(); idx++) {
+        for(int idx = 0; idx < itemList.size(); idx++) {
             System.out.printf("%d. %s\n", idx+1, itemList.get(idx).toCatalogItemString());
         }
     }

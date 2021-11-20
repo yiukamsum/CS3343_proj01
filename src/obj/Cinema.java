@@ -23,11 +23,11 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 	public void addTheatre(Theatre theatre) {
 	    if(!theatreList.isEmpty()){
 	        for(Theatre t: theatreList){
-			if(t == theatre){
-				System.out.println("The theatre is already existed!");
-				return;
+				if(t == theatre){
+					System.out.println("The theatre is already existed!");
+					return;
+				}
 			}
-	         }
 	    }
 
 	    theatreList.add(theatre);	
@@ -68,13 +68,12 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 	}
 	
 	@Override
-        public String toCatalogItemString(){
+    public String toCatalogItemString(){
 		return String.format(
 			"\tCinema ID: \t\t%d\n"+
 			"\tCinema Name: \t%s\n"+
 			"\tLocation: \t%s\n"+
 			"\tPhone Number: \t%s\n"
 		, cinemaID, name, location, phoneNo);
-       }
-		
+	}	
 }
