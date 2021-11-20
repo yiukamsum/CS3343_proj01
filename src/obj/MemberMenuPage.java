@@ -26,10 +26,13 @@ public class MemberMenuPage extends Page {
             switch(action) {
                 case 1:
                     new PurchaseTicketPage((MemberConsole)getConsole()).display();
+                    break;
                 case 2:
                     new viewHistoryCatalogPage((MemberConsole)getConsole()).display();
+                    break;
                 case 3:
                     new viewMovieCatalogPage((MemberConsole)getConsole()).display();
+                    break;
                 default:
                     System.out.printf("Invalid Input\n");
             }
