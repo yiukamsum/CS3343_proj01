@@ -13,6 +13,10 @@ public class PurchaseHistory implements Comparable<PurchaseHistory>, CatalogItem
         this.ticket = ticket;
         this.purchaseDate = purchaseDate;
     }
+    
+    public int getHistoryID(){
+        return historyID;
+    }
 
     @Override 
     public int compareTo(PurchaseHistory history){
