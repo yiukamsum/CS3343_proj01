@@ -37,7 +37,7 @@ public class viewMovieCatalogPage extends page {
                     System.out.printf("Please enter movie ID: \n" );
                     input = getInputStream().nextInt();
                     searchMovieByID(input);}
-            else if(input = 3){
+            else if(input == 3){
                     System.out.printf("Please enter movie name: \n" );
                     movieName = getInputStream().nextLine();
                     searchMovieByName(movieName);
