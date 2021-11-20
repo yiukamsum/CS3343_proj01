@@ -65,4 +65,8 @@ public class CinemaManageAction extends DbAction{
             
         System.out.println("Cannot find the cinema!");
     }
+    
+     public ArrayList<Cinema> getCinemaList(){
+    	return this.cinemaList;
+    }
 }
