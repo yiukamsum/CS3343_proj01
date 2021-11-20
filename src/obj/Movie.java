@@ -19,6 +19,10 @@ public class Movie implements Comparable<Movie>, CatalogItem{
     public String getName() {
         return this.name;
     }
+    
+    public int getMovieID(){
+        return this.movieID;
+    }
 
     @Override
     public int compareTo(Movie movie){
