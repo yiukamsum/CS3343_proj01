@@ -41,10 +41,10 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 	    Collections.sort(theatreList);
 	}
 
-	public void removeTheatre(int theatreID){
+	public void removeTheatre(Theatre theatre){
 		if(!theatreList.isEmpty()){
 	            for(Theatre t: theatreList){					
-	        	if(t.getTheatreID() == theatreID){
+	        	if(t.equals(theatre)){
 			    	theatreList.remove(t);
 	        		System.out.println("Remove a theatre.");	    
 	        		return;
@@ -62,10 +62,10 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 			if(t.getTheatreID() == theatreID)	     
 			    return t;	
                 
-            }
-		 }
+                     }
+	         }
 			
-		return null;
+		 return null;
 	}
 		
 	@Override
