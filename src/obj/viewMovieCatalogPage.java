@@ -9,8 +9,8 @@ public class viewMovieCatalogPage extends page {
     public viewMovieCatalogPage(MemberConsole console) {
         super(console);
 
-        ArrayList<PurchaseHistory> movieList = new getMovieAction().getMovieList();
-        movieCatalog = new Catalog<PurchaseHistory>(movieList);
+        ArrayList<Movie> movieList = new getMovieAction().getMovieList();
+        movieCatalog = new Catalog<Movie>(movieList);
 
     }
     
@@ -21,7 +21,6 @@ public class viewMovieCatalogPage extends page {
 
         int input = 0;
         String movieName;
-        showHistoryIDList();
 
         do {
              System.out.printf(
@@ -32,7 +31,7 @@ public class viewMovieCatalogPage extends page {
             input = getInputStream().nextInt();
 
             if(input == -1) { break;}
-            else if(input == 1){showHistoryIDList();}
+            else if(input == 1){showMovieList();}
             else if(input == 2){
                     System.out.printf("Please enter movie ID: \n" );
                     input = getInputStream().nextInt();
@@ -84,7 +83,7 @@ public class viewMovieCatalogPage extends page {
         
         while(movieCatalog.getItem(i) != null){
             m = movieCatalog.getItem(i);
-            if(m.getMovieName().equals(movieName)){
+            if(m.getName().equals(movieName)){
                 m.toCatalogItemString();
                 return;
             }
