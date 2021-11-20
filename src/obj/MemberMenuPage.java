@@ -15,18 +15,21 @@ public class MemberMenuPage extends Page {
             System.out.printf(
                 "\n====Member Menu====\n"+
                 "(1)Purchase Ticket\n"+
+                "(2)View Purchase History\n"+
+                "(3)View Movie\n"+
                 "------------------\n"+
                 "Enter -1 to logout\n"
             );
             
             action = getInputStream().nextInt();
-            getInputStream().nextLine();
 
             switch(action) {
                 case 1:
                     new PurchaseTicketPage((MemberConsole)getConsole()).display();
-                case -1:
-                    break;
+                case 2:
+                    new viewHistoryCatalogPage((MemberConsole)getConsole()).display();
+                case 3:
+                    new viewMovieCatalogPage((MemberConsole)getConsole()).display();
                 default:
                     System.out.printf("Invalid Input\n");
             }
