@@ -2,7 +2,7 @@ package obj;
 
 import java.util.ArrayList;
 
-public class viewMovieCatalogPage extends page {
+public class viewMovieCatalogPage extends Page {
 
     private Catalog<Movie> movieCatalog;
 
