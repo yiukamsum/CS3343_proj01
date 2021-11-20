@@ -49,7 +49,9 @@ public class viewMovieCatalogPage extends page {
     public void showMovieList(){
 
         int i = 0;
+        Movie m;
         while(movieCatalog.getItem(i) != null){
+            m = movieCatalog.getItem(i);
             System.out.printf("%d. Cinema ID: %d, Cinema name: %s \n", i, m.getMovieID(), m.getName());
             i++;
         }
@@ -60,7 +62,10 @@ public class viewMovieCatalogPage extends page {
     public void searchMovieByID(int movieID){
 
         int i = 0;
-        while(m.getItem(i) != null){
+        Movie m;
+        
+        while(movieCatalog.getItem(i) != null){
+            m = movieCatalog.getItem(i);
             if(m.getMovieID() == movieID){
                 m.toCatalogItemString();
                 return;
@@ -75,7 +80,10 @@ public class viewMovieCatalogPage extends page {
     public void searchMovieByName(String movieName){
 
         int i = 0;
-        while(m.getItem(i) != null){
+        Movie m;
+        
+        while(movieCatalog.getItem(i) != null){
+            m = movieCatalog.getItem(i);
             if(m.getMovieName().equals(movieName)){
                 m.toCatalogItemString();
                 return;
