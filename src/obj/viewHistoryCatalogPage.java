@@ -21,7 +21,6 @@ public class viewHistoryCatalogPage extends Page{
         System.out.printf("\n====Purchase History====\n");
 
         int input = 0;
-        showHistoryIDList();
 
         do {
             System.out.printf("Enter 1 to show the history ID list and 2 to search purchase history (-1 to leave)\n" );
@@ -60,14 +59,15 @@ public class viewHistoryCatalogPage extends Page{
 
     public void searchPurchaseHistory(int historyID){
 
-        System.out.println("Result: ");
-
         for (PurchaseHistory p: historyCatalog){
             if(p.getHistoryID() == historyID){
+                System.out.println("Result: ");
                 p.toCatalogItemString();
+                break;
             } 
         }
-
+         
+        System.out.println("Cannot find the history record!");
     }
 
 }
