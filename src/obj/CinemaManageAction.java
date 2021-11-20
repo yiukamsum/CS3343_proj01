@@ -6,7 +6,7 @@ public class CinemaManageAction extends DbAction{
 
     private ArrayList<Cinema> cinemaList;
 
-    public CinemaManagerAction(Admin admin) {
+    public CinemaManageAction(Admin admin) {
 
         try{
             if(admin.equals(Admin.getInstance())){
