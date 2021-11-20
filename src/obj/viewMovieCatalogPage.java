@@ -25,10 +25,10 @@ public class viewMovieCatalogPage extends page {
 
         do {
              System.out.printf(
-                "(1)Show Movie list\n"+          
-                "(2)Search Movie by movie ID\n"+
-                "(3)Search Movie by movie name\n"+
-                "(-1)Leave this page\n");
+                "(1) Show Movie list\n"+          
+                "(2) Search Movie by movie ID\n"+
+                "(3) Search Movie by movie name\n"+
+                "(-1) Leave this page\n");
             input = getInputStream().nextInt();
 
             if(input == -1) { break;}
