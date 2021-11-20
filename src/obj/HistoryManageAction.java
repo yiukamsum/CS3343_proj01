@@ -14,10 +14,15 @@ public class HistoryManageAction extends DbAction {
 	public void addHistory(PurchaseHistory history) {
 		historyList.add(history);	
 	    Collections.sort(historyList);
-    }
+        }
 	
 	public int getPurchaseHistorySize() {
 		return historyList.size();
 	}
+	
+	public ArrayList<PurchaseHistory> getHistory(){
+		return historyList;
+	}
+        
 }
 
