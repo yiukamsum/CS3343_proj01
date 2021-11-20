@@ -24,9 +24,9 @@ public class viewHistoryCatalogPage extends Page{
 
         do {       
             System.out.printf(
-                "(1)Show Purchase History list\n"+          
-                "(2)Search Purchase History\n"+
-                "(-1)Leave this page\n");
+                "(1) Show Purchase History list\n"+          
+                "(2) Search Purchase History\n"+
+                "(-1) Leave this page\n");
             input = getInputStream().nextInt();
 
             if(input == -1) { break;}
