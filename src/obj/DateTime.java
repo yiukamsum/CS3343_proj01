@@ -2,8 +2,8 @@ package obj;
 
 import java.time.LocalDateTime;
 
-public class DateTime implements Comparable<DateTime>, CatalogItem{
-    Integer year;
+public class DateTime implements Comparable<DateTime>{
+    int year;
     int month;
     int day;
     int hour;
@@ -57,12 +57,7 @@ public class DateTime implements Comparable<DateTime>, CatalogItem{
 
     @Override
     public int compareTo(DateTime dateTime){
-        return this.year.compareTo(dateTime.year);
-    }
-
-    @Override
-    public String toCatalogItemString(){
-        return year + "-" + month + "-" + day + " " + hour + ":" + minute + "\n";
+        return this.year - dateTime.year;
     }
 
 }
