@@ -23,10 +23,10 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
         public int getCinemaID() {
 		return this.cinemaID;
 	}
-
-	public int getCinemaID() {
-		return this.cinemaID;
-	}
+	
+	public int getTheatreSize() {
+               return this.theatreList.size();
+        }
 
 	public void addTheatre(Theatre theatre) {
 	    if(!theatreList.isEmpty()){
@@ -41,15 +41,15 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 	    Collections.sort(theatreList);
 	}
 
-	public void removeTheatre(Theatre theatre){
+	public void removeTheatre(int theatreID){
 		if(!theatreList.isEmpty()){
-	            for(Theatre t: theatreList){		
-			if(t == theatre){
-			    theatreList.remove(t);
-			    System.out.println("Remove a theatre.");
-			    return;
+	            for(Theatre t: theatreList){					
+	        	if(t.getTheatreID() == theatreID){
+			    	theatreList.remove(t);
+	        		System.out.println("Remove a theatre.");	    
+	        		return;
 		         }
-	            }
+	             }
 	        }
 
 		System.out.println("Cannot Find the theatre!");
