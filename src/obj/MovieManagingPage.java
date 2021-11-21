@@ -57,11 +57,13 @@ public class MovieManagingPage extends Page {
 
           int i = 0;
           Movie m;
+          System.out.printf("\n---Movie List---\n");
           while(movieCatalog.getItem(i) != null){
               m = movieCatalog.getItem(i);
-              System.out.printf("%d. Cinema ID: %d, Cinema name: %s, Duration: %.2f \n", i, m.getMovieID(), m.getName(), m.getDuration());
+              System.out.printf("%d. Movie ID: %d, Movie name: %s, Duration: %.2f \n", i, m.getMovieID(), m.getName(), m.getDuration());
               i++;
           }
+          System.out.printf("\n--------------\n");
 
     }
 

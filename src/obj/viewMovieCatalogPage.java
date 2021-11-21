@@ -49,12 +49,14 @@ public class viewMovieCatalogPage extends Page {
 
         int i = 0;
         Movie m;
+
+        System.out.printf("\n---Movie List---\n");
         while(movieCatalog.getItem(i) != null){
             m = movieCatalog.getItem(i);
             System.out.printf("%d. Cinema ID: %d, Cinema name: %s \n", i, m.getMovieID(), m.getName());
             i++;
         }
-
+        System.out.printf("\n--------------\n");
     }
 
 

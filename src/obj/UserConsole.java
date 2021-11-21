@@ -17,8 +17,8 @@ public class UserConsole {
             System.out.printf(
                 "\n===Start Page===\n"+
                 "Login As:\n"+    
-                "Member\t(1)\n"+    
-                "Admin\t(2)\n"+
+                "(1) Member\n"+    
+                "(2) Admin\n"+
                 "-------------\n"+
                 "Enter -1 to exit\n"
             );
