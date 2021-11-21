@@ -102,7 +102,7 @@ public class SessionManagingPage extends Page {
         do {
             System.out.printf("Enter the id of the session you want to remove: ");
 
-            input = getNextInt();
+            input = enterInt("");
 
             if(input == -1) { break; }
 
@@ -140,7 +140,7 @@ public class SessionManagingPage extends Page {
         do{
             System.out.printf("Enter the movie index: ");
 
-            input = getNextInt();
+            input = enterInt("");
 
             if(input == -1) { break; }
 
@@ -163,7 +163,7 @@ public class SessionManagingPage extends Page {
         do{
             System.out.printf("Enter the cinema index: ");
 
-            input = getNextInt();
+            input = enterInt("");
 
             if(input == -1) { break; }
 
@@ -186,7 +186,7 @@ public class SessionManagingPage extends Page {
         do{
             System.out.printf("Enter the theatra index: ");
 
-            input = getNextInt();
+            input = enterInt("");
 
             if(input == -1) { break; }
 
