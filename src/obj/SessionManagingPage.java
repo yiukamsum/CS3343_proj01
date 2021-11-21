@@ -55,7 +55,6 @@ public class SessionManagingPage extends Page {
         Cinema cinema;
         Theatre theatre;
         DateTime startTime;
-        double duration;
 
         System.out.println("---Add session---");
         System.out.println("(Enter -1 to go back)");

@@ -15,36 +15,42 @@ public class CinemaManagingPage extends Page {
     }
 
     @Override
-    public void display() {
-        System.out.println("\n====Cinema Managing====");        
-        
-        printCinemaCatalog();
-
-        String input = "";
+    public void display() {        
+        int input = 0;
         do {
+            System.out.printf(
+                "\n===Manage Cinema===\n"+
+                "(1) Show Cinema List\n"+          
+                "(2) Add Cinema\n"+          
+                "(3) Remove Cinema\n"+
+                "(-1) Leave this page\n");
+            input = enterInt("");
 
-            input = getInputStream().nextLine();
+            switch(input) {
+                case 1:
+                    printCinemaCatalog();
+                    break;
+                case 2:
+                    addCinema(); 
+                    printCinemaCatalog();
+                    break;
+                case 3:
+                    removeCinema(); 
+                    printCinemaCatalog();
+                    break;
+                case -1:
+                    break;
+                default:
+                    System.out.println("Invalid Input"); 
+            }
 
-            if(input.equals("A")) { 
-                addCinema(); 
-                printCinemaCatalog();
-            }
-            else if(input.equals("R")) { 
-                removeCinema(); 
-                printCinemaCatalog();
-            }
-            else if(!input.equals("-1")) { 
-                System.out.println("Wrong Input"); 
-            }
-
-        } while(!input.equals("-1"));
+        } while(input != -1);
     }
     
     private void printCinemaCatalog() {
         System.out.println("\n---Cinema Catalog---");
         cinemaCatalog.show();
         System.out.println("--------------------");
-        System.out.println("(A-add cinema, R-remove cinema, -1-exit page)");
     }
 
     private void addCinema() {
