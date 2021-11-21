@@ -7,12 +7,14 @@ public class Movie implements Comparable<Movie>, CatalogItem{
     private int movieID;
     private String name;
     private DateTime releaseDate;
+    private double duration;
     private ArrayList<String> actorList = new ArrayList<String>();
 
-    public Movie(int movieID, String name, DateTime releaseDate, ArrayList<String> actorList){
+    public Movie(int movieID, String name, DateTime releaseDate, double duration, ArrayList<String> actorList){
         this.movieID = movieID;
         this.name = name;
         this.releaseDate = releaseDate;
+        this.duration = duration;
         this.actorList.addAll(actorList);
     }
 

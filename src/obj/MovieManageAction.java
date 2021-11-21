@@ -13,7 +13,7 @@ public class MovieManageAction extends DbAction{
 		return movieList;
 	}
 
-  public void addMovie(String movieName, DateTime releaseDate, ArrayList<String> actorList) {
+  public void addMovie(String movieName, DateTime releaseDate, double duration, ArrayList<String> actorList) {
     int movieID = movieList.size() + 1;
     for(Movie m: movieList) {
       if(m.getName().equals(movieName)) {
@@ -22,7 +22,7 @@ public class MovieManageAction extends DbAction{
       }
     }
 
-    Movie movie = new Movie(movieID, movieName, releaseDate, actorList);
+    Movie movie = new Movie(movieID, movieName, releaseDate, duration, actorList);
 
     System.out.println("Added a movie.");
   }

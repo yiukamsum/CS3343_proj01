@@ -106,6 +106,7 @@ public class MovieManagingPage extends Page {
          String input = "", movieName;
          DateTime releaseDate;
          int year, month, day;
+         double duration;
          ArrayList<String> actorList = new ArrayList<String>();
          
          System.out.println("\n====Add Movie====\n");
@@ -124,6 +125,9 @@ public class MovieManagingPage extends Page {
          if(day == -1) {return;}
          
          releaseDate = new DateTime(year, month, day);
+
+         duration = enterDouble("Enter duration of the movie(in hour): ");
+         if(duration == -1.0) { return; }
          
          System.out.println("Enter the actor name. Enter Done to end the action.");
          while(!input.equals("Done")) {
@@ -131,7 +135,7 @@ public class MovieManagingPage extends Page {
         	 actorList.add(input);
          }
          
-         action.addMovie(movieName, releaseDate, actorList);
+         action.addMovie(movieName, releaseDate, duration, actorList);
 	}
 
 	private void removeMovie() {
