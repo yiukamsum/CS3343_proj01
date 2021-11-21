@@ -32,10 +32,10 @@ public class Movie implements Comparable<Movie>, CatalogItem{
     @Override
     public String toCatalogItemString(){
         String output = "";
-        output = output + "Movie ID: " + movieID + "\n";
-        output = output + "Name: " + name + "\n";
-        output = output + "Release Date " + releaseDate.toString() + "\n";
-        output = output + "Actor List: ";
+        output = output + "\tMovie ID: " + movieID + "\n";
+        output = output + "\tName: " + name + "\n";
+        output = output + "\tRelease Date " + releaseDate.toString() + "\n";
+        output = output + "\tActor List: ";
 
         for(String s: actorList){
             output = output + s + " ";

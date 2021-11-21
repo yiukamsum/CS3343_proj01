@@ -14,6 +14,8 @@ public class AdminMenuPage extends Page {
             System.out.printf(
                 "\n====Admin Menu====\n"+
                 "(1) Manage Cinema\n"+
+                "(2) Manage Movie Session\n"+
+                "------------------\n"+
                 "Enter -1 to logout\n"
             );
             
@@ -23,6 +25,9 @@ public class AdminMenuPage extends Page {
             switch(action) {
                 case 1:
                     new CinemaManagingPage((AdminConsole)getConsole()).display();
+                    break;
+                case 2:
+                    new SessionManagingPage((AdminConsole)getConsole()).display();
                     break;
                 case -1:
                     break;

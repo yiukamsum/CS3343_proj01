@@ -6,7 +6,7 @@ public class getCinemaAction extends DbAction {
 
     ArrayList<Cinema> cinemaList;
     
-    public getCinemaAction(UserConsole console) {
+    public getCinemaAction() {
         cinemaList = getDatabase().getCinemaList();
     }
 

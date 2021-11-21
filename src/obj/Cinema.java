@@ -16,14 +16,14 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 		this.phoneNo = phoneNo;
 	}
 
+	public ArrayList<Theatre> getTheatraList() {
+		return this.theatreList;
+	}
+
 	public String getName() {
 		return this.name;
 	}
 	
-        public int getCinemaID() {
-		return this.cinemaID;
-	}
-
 	public int getCinemaID() {
 		return this.cinemaID;
 	}

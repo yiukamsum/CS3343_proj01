@@ -1,6 +1,6 @@
 package obj;
 
-public class Theatre implements Comparable<Theatre>{
+public class Theatre implements Comparable<Theatre>, CatalogItem{
 	private int theatreID;
 	private int colNum;
 	private int rowNum;
@@ -26,6 +26,11 @@ public class Theatre implements Comparable<Theatre>{
     @Override
 	public int compareTo(Theatre theatre){
 		return this.theatreID - theatre.theatreID;
+	}
+
+	@Override
+	public String toCatalogItemString() {
+		return String.format("row num %d, col num %d\n", rowNum, colNum);
 	}
 	
 }

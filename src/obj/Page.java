@@ -20,6 +20,28 @@ abstract class Page {
         return this.console;
     }
 
+    protected String getNextLine() {
+        return console.getInputStream().nextLine();
+    }
+
+    protected int getNextInt() {
+        int res = console.getInputStream().nextInt();
+        console.getInputStream().nextLine();
+        return res;
+    }
+
+    protected String enterString(String msg) {
+        System.out.printf(msg);
+        return console.getInputStream().nextLine();
+    }
+
+    protected int enterInt(String msg) {
+        System.out.printf(msg);
+        int res = console.getInputStream().nextInt();
+        console.getInputStream().nextLine();
+        return res;     
+    }
+
     // entry of a page
     abstract public void display();
 }

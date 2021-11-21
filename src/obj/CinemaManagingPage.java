@@ -10,7 +10,7 @@ public class CinemaManagingPage extends Page {
     public CinemaManagingPage(AdminConsole console) {
         super(console);
 
-        cinemaCatalog = new Catalog<>(new getCinemaAction(console).getCinemaList());
+        cinemaCatalog = new Catalog<>(new getCinemaAction().getCinemaList());
         action = new CinemaManageAction(console.getAdmin());
     }
 

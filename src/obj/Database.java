@@ -31,7 +31,7 @@ public class Database {
 
         sessionList = new ArrayList<MovieSession>();
         sessionList.add(
-            new MovieSession(1, cinemaList.get(0), cinemaList.get(0).getTheatre(1), movieList.get(0), DateTime.now(), DateTime.now())
+            new MovieSession(1, cinemaList.get(0), cinemaList.get(0).getTheatre(1), movieList.get(0), DateTime.now(), 2)
         );
 
         historyList = new ArrayList<PurchaseHistory>();
