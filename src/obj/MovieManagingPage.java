@@ -32,21 +32,23 @@ public class MovieManagingPage extends Page {
                 "(4) Add movie\n"+
                 "(5) Remove movie\n"+
                 "(-1) Leave this page\n");
-            input = getInputStream().nextInt();
+            input = enterInt("");
 
             if(input == -1) { break;}
             else if(input == 1){showMovieList();}
             else if(input == 2){
                     System.out.printf("Please enter movie ID: \n" );
                     input = getInputStream().nextInt();
-                    searchMovieByID(input);}
+                    searchMovieByID(input);
+            }
             else if(input == 3){
                     System.out.printf("Please enter movie name: \n" );
                     movieName = getInputStream().nextLine();
                     searchMovieByName(movieName);
-            }else if(input == 4){addMovie();}
-             else if(input == 5){removeMovie();}
-             else{System.out.println("invalid input!" );}
+            }
+            else if(input == 4){addMovie();}
+            else if(input == 5){removeMovie();}
+            else{System.out.println("invalid input!" );}
             
          }while(input != -1);
     }
@@ -109,49 +111,42 @@ public class MovieManagingPage extends Page {
          System.out.println("\n====Add Movie====\n");
          System.out.println("Enter -1 to quit this session");
          
-         System.out.println("Enter the movie name: ");
-         movieName = getInputStream.nextLine();
-         if(movieName.equals("-1")) {break;}
+         movieName = enterString("Enter the movie name: ");
+         if(movieName.equals("-1")) {return;}
          
-         System.out.println("Enter the year of the release date: ");
-         year = getInputStream.nextInt();
+         year = enterInt("Enter the year of the release date: ");
          if(year == -1) {return;}
-         
-         System.out.println("Enter the month of the release date: ");
-         month = getInputStream.nextInt();
+
+         month = enterInt("Enter the month of the release date: ");
          if(month == -1) {return;}
-         
-         System.out.println("Enter the day of the release date: ");
-         day = getInputStream.nextInt();
+
+         day = enterInt("Enter the day of the release date: ");
          if(day == -1) {return;}
          
          releaseDate = new DateTime(year, month, day);
          
          System.out.println("Enter the actor name. Enter Done to end the action.");
          while(!input.equals("Done")) {
-        	 input = getInputStream.nextLine();
+             input = enterString("");
         	 actorList.add(input);
          }
          
-         action.addMovie(movieName, releaseDate, actorList));
+         action.addMovie(movieName, releaseDate, actorList);
 	}
 
 	private void removeMovie() {
 		int input = 0;
         System.out.println("\n====Remove Movie====\n");   
         System.out.println("Enter 1 to remove movie by Id and 2 to remove movie by name");          
-        input = getInputStream.nextInt();
+        input = enterInt("");
     
         if(input == 1) {
-        	System.out.println("Enter movie ID (Enter -1 to end this session):");  
-        	int movieID = getInputStream.nextInt();
-        	if(movieID == -1) {break;}
+        	int movieID = enterInt("Enter movie ID (Enter -1 to end this session): ");
             action.removeMovieByID(movieID);
         }else {
-        	System.out.println("Enter movie Name (Enter Exit to end this session):");  
-        	String movieName = getInputStream.nextLine();
-        	if(movieName.equals("Exit")) {break;}
-          action.removeMovieByName(movieName);
+        	String movieName = enterString("Enter movie Name (Enter Exit to end this session): ");
+        	if(movieName.equals("Exit")) { return; }
+            action.removeMovieByName(movieName);
         }
-		
 	}
+}

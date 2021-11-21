@@ -90,7 +90,7 @@ public class SessionManagingPage extends Page {
         // create a movie session record
         action.createSessionRecord(movie, cinema, theatre, startTime, duration);
 
-        System.out.println("> Create session success");
+        System.out.println("\n> Create session success");
     }
 
     private void removeSession() {
