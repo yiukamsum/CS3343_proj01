@@ -18,28 +18,35 @@ public class SessionManagingPage extends Page {
     }
 
     @Override
-    public void display() {
-        System.out.println("\n====Movie Session Managing====");   
-        printSessionCatalog();
-
-        String input = "";
+    public void display() {  
+        int input = 0;
         do {
+            System.out.printf(
+                "\n===Movie Session Managing===\n"+
+                "(1) Show Movie Session List\n"+          
+                "(2) Add Movie Session\n"+          
+                "(3) Remove Movie Session\n"+
+                "(-1) Leave this page\n");
+            input = enterInt("");
 
-            input = getNextLine();
-
-            if(input.equals("A")) { 
-                addSession(); 
-                printSessionCatalog();
+            switch(input) {
+                case 1:
+                    printSessionCatalog();
+                    break;
+                case 2:
+                    addSession(); 
+                    printSessionCatalog();
+                    break;
+                case 3:
+                    removeSession(); 
+                    printSessionCatalog();
+                    break;
+                case -1:
+                    break;
+                default:
+                    System.out.println("Invalid Input"); 
             }
-            else if(input.equals("R")) { 
-                removeSession(); 
-                printSessionCatalog();
-            }
-            else if(!input.equals("-1")) { 
-                System.out.println("Wrong Input"); 
-            }
-
-        } while(!input.equals("-1"));
+        } while(input != -1);
     }
     
 
@@ -47,7 +54,6 @@ public class SessionManagingPage extends Page {
         System.out.println("\n---Movie Session Catalog---");
         sessionCatalog.show();
         System.out.println("-----------------------------");
-        System.out.println("(A-add session, R-remove session, -1-exit page)");
     }
 
     private void addSession() {
