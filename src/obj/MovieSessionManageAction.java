@@ -9,6 +9,13 @@ public class MovieSessionManageAction extends DbAction {
         this.sessionList = getDatabase().getMovieSessionList();
     }
 
+    public MovieSession createSessionRecord(Movie movie, Cinema cinema, Theatre theatre, DateTime startTime, double duration) {
+        int sessionID = sessionList.size()+1;
+        MovieSession session = new MovieSession(sessionID, cinema, theatre, movie, startTime, duration);
+        sessionList.add(session);
+        return session;
+    }
+
     public void removeMovieSessionById(int sessionId) {
         for(int i = 0; i < sessionList.size(); i++) {
             MovieSession session = sessionList.get(i);

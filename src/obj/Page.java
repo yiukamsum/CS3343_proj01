@@ -42,6 +42,13 @@ abstract class Page {
         return res;     
     }
 
+    protected double enterDouble(String msg) {
+        System.out.printf(msg);
+        double res = console.getInputStream().nextDouble();
+        console.getInputStream().nextLine();
+        return res;
+    }
+
     // entry of a page
     abstract public void display();
 }

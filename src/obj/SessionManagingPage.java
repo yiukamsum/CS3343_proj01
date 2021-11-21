@@ -55,6 +55,7 @@ public class SessionManagingPage extends Page {
         Cinema cinema;
         Theatre theatre;
         DateTime startTime;
+        double duration;
 
         System.out.println("---Add session---");
         System.out.println("(Enter -1 to go back)");
@@ -75,13 +76,21 @@ public class SessionManagingPage extends Page {
         if(theatre == null) { return; }
 
 
-        System.out.println("\n[Enter Start Time]");
         // ask for the start time
+        System.out.println("\n[Enter Start Time]");
         startTime = enterStartTime();
         if(startTime == null) { return; }
 
+        // ask for the duration
+        System.out.println("\n[Enter the duration(in hour)]");
+        duration = enterDouble("");
+        if(duration == -1.0) { return;}
 
-        // ask for the 
+
+        // create a movie session record
+        action.createSessionRecord(movie, cinema, theatre, startTime, duration);
+
+        System.out.println("> Create session success");
     }
 
     private void removeSession() {
