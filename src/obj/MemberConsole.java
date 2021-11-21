@@ -22,7 +22,7 @@ public class MemberConsole extends UserConsole {
         if(member == null) { return; }
 
         /* welcome msg */
-        System.out.printf("Welcome %s\n", member.getAccountName());
+        System.out.printf("> Welcome %s\n", member.getAccountName());
 
         /* start the member menu */
         MemberMenuPage memberMenu = new MemberMenuPage(this);

@@ -20,7 +20,7 @@ public class AdminConsole extends UserConsole {
 
 
         /* Welcome Msg */
-        System.out.printf("Welcome %s\n", admin.getName());
+        System.out.printf("> Welcome %s\n", admin.getName());
 
 
         /* Display admin menu */
