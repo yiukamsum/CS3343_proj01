@@ -59,7 +59,7 @@ public class MovieManagingPage extends Page {
           Movie m;
           while(movieCatalog.getItem(i) != null){
               m = movieCatalog.getItem(i);
-              System.out.printf("%d. Cinema ID: %d, Cinema name: %s \n", i, m.getMovieID(), m.getName());
+              System.out.printf("%d. Cinema ID: %d, Cinema name: %s, Duration: %.2f \n", i, m.getMovieID(), m.getName(), m.getDuration());
               i++;
           }
 
