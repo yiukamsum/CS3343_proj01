@@ -7,16 +7,14 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
     private Theatre theatre;
     private Movie movie;
     private DateTime startTime;
-    private double duration; // in hour
     private boolean vancacy[][];
 
-    public MovieSession(int sessionID, Cinema cinema, Theatre theatre, Movie movie, DateTime startTime, double duration ){
+    public MovieSession(int sessionID, Cinema cinema, Theatre theatre, Movie movie, DateTime startTime){
         this.sessionID = sessionID;
         this.cinema = cinema;
         this.theatre = theatre;
         this.movie = movie;
         this.startTime = startTime;
-        this.duration = duration;     
         this.vancacy = new boolean[theatre.getRowNum()][theatre.getColNum()];
     }
 
@@ -92,7 +90,7 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
             "\tTheatre: \t%s\n"+
             "\tStart time: \t%s\n"+
             "\tDuration: \t%.2f"
-        , movie.getName(), cinema.getName(), theatre.getTheatreID(), startTime.toString(), duration);
+        , movie.getName(), cinema.getName(), theatre.getTheatreID(), startTime.toString(), movie.getDuration());
     }
 
     public String getMovieName() {

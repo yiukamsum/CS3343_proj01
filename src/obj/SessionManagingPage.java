@@ -81,14 +81,9 @@ public class SessionManagingPage extends Page {
         startTime = enterStartTime();
         if(startTime == null) { return; }
 
-        // ask for the duration
-        System.out.println("\n[Enter the duration(in hour)]");
-        duration = enterDouble("");
-        if(duration == -1.0) { return;}
-
 
         // create a movie session record
-        action.createSessionRecord(movie, cinema, theatre, startTime, duration);
+        action.createSessionRecord(movie, cinema, theatre, startTime);
 
         System.out.println("\n> Create session success");
     }
