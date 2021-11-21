@@ -28,6 +28,10 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 		return this.cinemaID;
 	}
 
+	public int getTheatreSize() {
+		return this.theatreList.size();
+ 	}
+
 	public void addTheatre(Theatre theatre) {
 	    if(!theatreList.isEmpty()){
 	        for(Theatre t: theatreList){
