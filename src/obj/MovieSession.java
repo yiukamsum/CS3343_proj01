@@ -91,7 +91,7 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
             "\tCinema: \t%s\n"+
             "\tTheatre: \t%s\n"+
             "\tStart time: \t%s\n"+
-            "\tDuration: \t%.2f\n"
+            "\tDuration: \t%.2f"
         , movie.getName(), cinema.getName(), theatre.getTheatreID(), startTime.toString(), duration);
     }
 

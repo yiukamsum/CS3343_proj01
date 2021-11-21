@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class PurchaseTicketPage extends Page {
 
-    private Catalog<MovieSession> sessionCatalog;
+    private MovieSessionCatalog sessionCatalog;
 
     public PurchaseTicketPage(MemberConsole console) {
         super(console);
 
         ArrayList<MovieSession> sessionList = new getMovieSessionAction().getMovieSession();
-        sessionCatalog = new Catalog<MovieSession>(sessionList);
+        sessionCatalog = new MovieSessionCatalog(sessionList);
     }
 
     @Override
@@ -19,13 +19,63 @@ public class PurchaseTicketPage extends Page {
         // and then ask user to select a session
         int input = 0;
 
-        System.out.printf("\n===Movie Sessions===\n");
+        do {
+            System.out.printf(
+                "\n===Purchase Ticket===\n"+
+                "(1) Show Movie Session List\n"+          
+                "(2) Search session by movie name\n"+
+                "(3) Search session by cinema name\n"+
+                "(4) Purchase ticket\n"+
+                "(-1) Leave this page\n");
+            input = enterInt("");
+
+            switch(input) {
+                case 1:
+                    sessionCatalog.removeFilter();
+                    showSessionList();
+                    break;
+                case 2:
+                    searchByMovieName();
+                    showSessionList();
+                    break;
+                case 3:
+                    searchByCinemaName();
+                    showSessionList();
+                    break;
+                case 4:
+                    purchaseTicket();
+                    break;
+                case -1:
+                    break;
+                default:
+                    System.out.println("> Invalid Input\n");
+            }
+
+        } while (input != -1);
+    }
+
+    private void showSessionList() {
+        System.out.printf("\n---Movie Session List---\n");
         sessionCatalog.show();
-        System.out.printf("--------------------\n");
-        
+        System.out.printf("------------------------\n");
+    }
+
+    private void searchByMovieName() {
+        String name = enterString("Enter movie name: ");
+        sessionCatalog.filterByMovieName(name);
+    }
+
+    private void searchByCinemaName() {
+        String name = enterString("Enter cinema name: ");
+        sessionCatalog.filterByCinemaName(name);
+    }
+
+    private void purchaseTicket() {
+        int input = 0;
+
         do {
             System.out.printf("Enter the session number to purchase its ticket (-1 to leave)\n");
-            input = getInputStream().nextInt();
+            input = enterInt("");
 
             if(input == -1) { break; }
 
@@ -78,7 +128,6 @@ public class PurchaseTicketPage extends Page {
 
         } while(input != -1);
     }
-
 
     private int enterTicketNum() {
         // ask how many seat user want to book

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 // Any subClass of CatalogItem
 public class Catalog<T extends CatalogItem> {
 
-    private ArrayList<T> itemList;  // for storing items after filter
+    private ArrayList<T> itemList;
     
     public Catalog(ArrayList<T> itemList) {
         this.itemList = itemList;
@@ -26,5 +26,12 @@ public class Catalog<T extends CatalogItem> {
             return null;
         }
         return itemList.get(idx);
+    }
+
+    protected ArrayList<T> getItemList() {
+        return this.itemList;
+    }
+    protected void setItemList(ArrayList<T> itemList) {
+        this.itemList = itemList;
     }
 }
