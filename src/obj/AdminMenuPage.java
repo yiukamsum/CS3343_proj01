@@ -29,6 +29,7 @@ public class AdminMenuPage extends Page {
                     break;
                 case 2:
                     new MovieManagingPage((AdminConsole)getConsole()).display();
+                    break;
                 case 3:
                     new SessionManagingPage((AdminConsole)getConsole()).display();
                     break;
