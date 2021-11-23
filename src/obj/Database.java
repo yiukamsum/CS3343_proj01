@@ -25,15 +25,20 @@ public class Database {
         cinemaList.add(cinema);
 
         movieList = new ArrayList<Movie>();
-        ArrayList<String> actorList = new ArrayList<String>();
-        actorList.add("Actor A");
-        movieList.add(new Movie(1, "Movie A", 
-                                new DateTime(2020, 10, 15, 13, 30), 
-                                2.0, actorList));
+        ArrayList<String> actorList1 = new ArrayList<String>();
+        actorList1.add("Actor A");
+        ArrayList<String> actorList2 = new ArrayList<String>();
+        actorList2.add("Actor B");
+        ArrayList<String> actorList3 = new ArrayList<String>();
+        actorList3.add("Actor C");
+        actorList3.add("Actor D");
+        movieList.add(new Movie(1, "Movie A", DateTime.today(), 2.0, actorList1));
+        movieList.add(new Movie(2, "Movie B", DateTime.today(), 2.0, actorList2));
+        movieList.add(new Movie(3, "Movie C", DateTime.today(), 3.0, actorList3));
 
         sessionList = new ArrayList<MovieSession>();
         sessionList.add(
-            new MovieSession(1, cinemaList.get(0), cinemaList.get(0).getTheatre(1), movieList.get(0), new DateTime(2020, 10, 15, 13, 30))
+            new MovieSession(1, cinemaList.get(0), cinemaList.get(0).getTheatre(1), movieList.get(0), DateTime.now())
         );
 
         historyList = new ArrayList<PurchaseHistory>();

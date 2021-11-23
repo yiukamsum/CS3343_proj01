@@ -38,6 +38,7 @@ public class viewMovieCatalogPage extends Page {
                     searchMovieByID(input);}
             else if(input == 3){
                     System.out.printf("Please enter movie name: \n" );
+                    getInputStream().nextLine();
                     movieName = getInputStream().nextLine();
                     searchMovieByName(movieName);
             }else{System.out.println("invalid input!" );}
@@ -53,7 +54,7 @@ public class viewMovieCatalogPage extends Page {
         System.out.printf("\n---Movie List---\n");
         while(movieCatalog.getItem(i) != null){
             m = movieCatalog.getItem(i);
-            System.out.printf("%d. Cinema ID: %d, Cinema name: %s \n", i, m.getMovieID(), m.getName());
+            System.out.printf("%d. Movie ID: %d, Movie name: %s \n", i, m.getMovieID(), m.getName());
             i++;
         }
         System.out.printf("\n--------------\n");
@@ -63,12 +64,11 @@ public class viewMovieCatalogPage extends Page {
     public void searchMovieByID(int movieID){
 
         int i = 0;
-        Movie m;
-        
+
         while(movieCatalog.getItem(i) != null){
-            m = movieCatalog.getItem(i);
-            if(m.getMovieID() == movieID){
-                m.toCatalogItemString();
+            if(movieCatalog.getItem(i).getMovieID() == movieID){
+            	System.out.println("===Movie Catalog===");
+            	System.out.print("1." + movieCatalog.getItem(i).toCatalogItemString());
                 return;
             }
             i++;
@@ -86,7 +86,8 @@ public class viewMovieCatalogPage extends Page {
         while(movieCatalog.getItem(i) != null){
             m = movieCatalog.getItem(i);
             if(m.getName().equals(movieName)){
-                m.toCatalogItemString();
+            	System.out.println("===Movie Catalog===");
+            	System.out.print("1." + movieCatalog.getItem(i).toCatalogItemString());
                 return;
             }
 
