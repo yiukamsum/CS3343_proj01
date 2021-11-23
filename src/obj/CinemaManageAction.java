@@ -11,7 +11,7 @@ public class CinemaManageAction extends DbAction{
     }
 
     public Cinema createCinemaRecord(String name, String location, String phoneNo, ArrayList<Theatre> theatreList) {
-        int cinemaID = cinemaList.size()+1;
+        int cinemaID = cinemaList.get(cinemaList.size()-1).getCinemaID()+1;
         Cinema cinema = new Cinema(cinemaID, location, name, phoneNo);
         for(Theatre theatre : theatreList) {
             cinema.addTheatre(theatre);
