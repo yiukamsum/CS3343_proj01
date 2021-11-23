@@ -31,7 +31,7 @@ public class PurchaseHistory implements Comparable<PurchaseHistory>, CatalogItem
     public String toCatalogItemString(){
 
         return String.format(
-			"\tHistory ID: \t\t%d\n"+
+			"\tHistory ID: \t%d\n"+
 			"\tMember ID: \t%d\n"+
 			"\tTicket Type: \t%s\n"+
             "\tTicket Price: \t%f\n"+

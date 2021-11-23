@@ -14,6 +14,10 @@ public class MemberConsole extends UserConsole {
         return this.member;
     }
 
+    public int getMemberID() {
+        return this.member.getMemberId();
+    }
+
     @Override
     public void start() {
         // ask member to login

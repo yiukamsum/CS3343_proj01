@@ -74,7 +74,7 @@ public class PurchaseTicket {
 
 		for(Ticket ticket : ticketList) {
 			// new histroy record
-			int historyID = historyAct.getPurchaseHistorySize()+1;
+			int historyID = historyAct.getNextHistoryID(console.getMemberID());
 			PurchaseHistory history = new PurchaseHistory(historyID, this.console.getMember(), ticket, DateTime.now());
 
 			// store record

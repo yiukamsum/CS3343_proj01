@@ -15,9 +15,12 @@ public class HistoryManageAction extends DbAction {
 		historyList.add(history);	
 	    Collections.sort(historyList);
     }
-	
-	public int getPurchaseHistorySize() {
-		return historyList.size();
+
+	public int getNextHistoryID(int memberID) {
+		ArrayList<PurchaseHistory> memberHistory = getHistory(memberID);
+
+		if(memberHistory.size() == 0) { return 1; }
+		return memberHistory.get(memberHistory.size()-1).getHistoryID()+1;
 	}
 	
 	public ArrayList<PurchaseHistory> getHistory(){
