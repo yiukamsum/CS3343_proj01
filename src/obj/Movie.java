@@ -38,11 +38,12 @@ public class Movie implements Comparable<Movie>, CatalogItem{
         output = output + "\tName: " + name + "\n";
         output = output + "\tRelease Date " + releaseDate.toString() + "\n";
         output = output + "\tActor List: \n";
-        output = output + "\tDuration: " + duration + "\n\t";
-
+        
         for(String s: actorList){
             output = output + s + " ";
         }
+        
+        output = output + "\tDuration: " + duration + "\n\t";
 
         output = output + "\n";
 
