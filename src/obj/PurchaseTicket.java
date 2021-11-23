@@ -16,6 +16,10 @@ public class PurchaseTicket {
 
 		// ask for payment method
 		PaymentMethod paymentMethod = selectPaymentMethod();
+		if(paymentMethod == null) { 
+			System.out.println("Payment cancelled");
+			return false; 
+		}
 		
 		/* pay */
 		boolean isPaySuccess = paymentMethod.pay(amount);
@@ -53,6 +57,8 @@ public class PurchaseTicket {
                 case 2:
                     method = new CreditCard();
                     break;
+				case -1:
+					return null;
                 default:
                     System.out.println("Wrong input");
             }

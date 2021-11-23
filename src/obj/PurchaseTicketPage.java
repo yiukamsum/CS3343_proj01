@@ -73,60 +73,62 @@ public class PurchaseTicketPage extends Page {
     private void purchaseTicket() {
         int input = 0;
 
+        MovieSession selectSession = null;
+
         do {
             System.out.printf("Enter the session number to purchase its ticket (-1 to leave)\n");
             input = enterInt("");
 
-            if(input == -1) { break; }
+            if(input == -1) { return; }
 
-            MovieSession selectSession = sessionCatalog.getItem(input-1);
+            selectSession = sessionCatalog.getItem(input-1);
 
             /* wrong index */
             if(selectSession == null) { 
                 System.out.println("Wrong number"); 
-                continue; 
             }
+        } while(selectSession == null);
 
 
-            ///////////////////////
-            /* enter the session */
-            //print seat plan
-            System.out.println("---Seat Plan---");
-            selectSession.printSeat();
 
-            // ask how many ticket
-            int ticketNum   = enterTicketNum();
-            
-            // ask to select ticket type
-            ArrayList<TicketType> selectedTicketType    = selectTicketType(ticketNum);
+        ///////////////////////
+        /* enter the session */
+        //print seat plan
+        System.out.println("---Seat Plan---");
+        selectSession.printSeat();
 
-            // ask to select seat
-            ArrayList<String> selectedSeatList          = selectSeat(ticketNum, selectSession);
+        // ask how many ticket
+        int ticketNum   = enterTicketNum();
+        if(ticketNum == -1) { return; }
+        
+        // ask to select ticket type
+        ArrayList<TicketType> selectedTicketType    = selectTicketType(ticketNum);
+        if(selectedTicketType == null) { return; }
 
-            // create ticket list
-            ArrayList<Ticket> ticketList                = createTickets(selectSession, ticketNum, selectedTicketType, selectedSeatList);
+        // ask to select seat
+        ArrayList<String> selectedSeatList          = selectSeat(ticketNum, selectSession);
+        if(selectedSeatList == null) { return; }
 
-            // confirm msg
-            boolean isConfirm = confirmSelection(selectSession, ticketList);
+        // create ticket list
+        ArrayList<Ticket> ticketList                = createTickets(selectSession, ticketNum, selectedTicketType, selectedSeatList);
 
-            if(isConfirm) {
-                PurchaseTicket purchaseTicket = new PurchaseTicket((MemberConsole)getConsole());
+        // confirm msg
+        boolean isConfirm = confirmSelection(selectSession, ticketList);
 
-                // process payment
-                boolean isPurchaseSuccess = purchaseTicket.purchase(selectSession, ticketList);
+        if(isConfirm) {
+            PurchaseTicket purchaseTicket = new PurchaseTicket((MemberConsole)getConsole());
 
-                /* pay success */
-                if(isPurchaseSuccess) {
-                    // take seats
-                    takeSeats(selectSession, selectedSeatList);
-                    // ask for printing ticket
-                    askPrintTicket(ticketList);
-                }
+            // process payment
+            boolean isPurchaseSuccess = purchaseTicket.purchase(selectSession, ticketList);
 
-                break; // leave the page
+            /* pay success */
+            if(isPurchaseSuccess) {
+                // take seats
+                takeSeats(selectSession, selectedSeatList);
+                // ask for printing ticket
+                askPrintTicket(ticketList);
             }
-
-        } while(input != -1);
+        }
     }
 
     private int enterTicketNum() {
@@ -161,7 +163,9 @@ public class PurchaseTicketPage extends Page {
                     break;
                 case 4:
                     typeList.add(new Child());
-                    break;                
+                    break;  
+                case -1:
+                    return null;              
                 default:
                     System.out.println("Wrong input");
             }
@@ -180,6 +184,8 @@ public class PurchaseTicketPage extends Page {
             // ask user to enter a seat
             System.out.printf("Enter seat %d: ", seatSelected.size()+1);
             inputSeat = getInputStream().nextLine();
+
+            if(inputSeat.equals("-1")) { return null; }
 
             if(session.isSeatEmpty(inputSeat)) { 
                 seatSelected.add(inputSeat);
@@ -259,7 +265,7 @@ public class PurchaseTicketPage extends Page {
                 }
                 return;
             }
-            else if(input.equals("N")) {
+            else if(input.equals("N") || input.equals("-1")) {
                 return;
             }
         }
