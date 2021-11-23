@@ -21,6 +21,8 @@ public class DateTime implements Comparable<DateTime>{
         this.year = year;
         this.month = month;
         this.day = day;
+        this.hour = 0;
+        this.minute = 0;
     }
 
     public void addMonth(int monthAdd) {
@@ -64,7 +66,7 @@ public class DateTime implements Comparable<DateTime>{
     @Override
     public String toString(){
         if(hour == 0 && minute == 0){
-            return year + "-" + month + "-" + day;
+            return year + "-" + month + "-" + day + " 00:00";
         }else{
             return year + "-" + month + "-" + day + " " + hour + ":" + minute;
         }
