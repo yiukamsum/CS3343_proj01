@@ -14,7 +14,7 @@ public class MovieManageAction extends DbAction{
 	}
 
   public void addMovie(String movieName, DateTime releaseDate, double duration, ArrayList<String> actorList) {
-    int movieID = movieList.size() + 1;
+    int movieID = movieList.get(movieList.size()-1).getMovieID()+1;
     for(Movie m: movieList) {
       if(m.getName().equals(movieName)) {
         System.out.println("The movie is already existed!");
@@ -23,6 +23,8 @@ public class MovieManageAction extends DbAction{
     }
 
     Movie movie = new Movie(movieID, movieName, releaseDate, duration, actorList);
+
+    movieList.add(movie);
 
     System.out.println("Added a movie.");
   }
