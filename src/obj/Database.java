@@ -25,9 +25,12 @@ public class Database {
         cinemaList.add(cinema);
 
         movieList = new ArrayList<Movie>();
-        ArrayList<String> actorList = new ArrayList<String>();
-        actorList.add("Actor A");
-        movieList.add(new Movie(1, "Movie A", DateTime.today(), 2.0, actorList));
+        ArrayList<String> actorList1 = new ArrayList<String>();
+        actorList1.add("Actor A");
+        ArrayList<String> actorList2 = new ArrayList<String>();
+        actorList2.add("Actor B");
+        movieList.add(new Movie(1, "Movie A", DateTime.today(), 2.0, actorList1));
+        movieList.add(new Movie(2, "Movie B", DateTime.today(), 2.0, actorList2));
 
         sessionList = new ArrayList<MovieSession>();
         sessionList.add(
