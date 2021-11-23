@@ -100,7 +100,7 @@ public class SessionManagingPage extends Page {
         
         System.out.println("(Enter -1 to go back)");
         do {
-            System.out.printf("Enter the id of the session you want to remove: ");
+            System.out.printf("Enter the item number of the session you want to remove: ");
 
             input = enterInt("");
 

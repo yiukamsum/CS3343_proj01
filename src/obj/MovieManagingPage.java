@@ -38,7 +38,7 @@ public class MovieManagingPage extends Page {
             else if(input == 1){showMovieList();}
             else if(input == 2){
                     System.out.printf("Please enter movie ID: \n" );
-                    input = getInputStream().nextInt();
+                    input = enterInt("");
                     searchMovieByID(input);
             }
             else if(input == 3){
@@ -76,7 +76,9 @@ public class MovieManagingPage extends Page {
         while(movieCatalog.getItem(i) != null){
             m = movieCatalog.getItem(i);
             if(m.getMovieID() == movieID){
-                m.toCatalogItemString();
+                System.out.println("--------------------------");
+                System.out.printf("%s", m.toCatalogItemString());
+                System.out.println("--------------------------");
                 return;
             }
             i++;
@@ -94,7 +96,9 @@ public class MovieManagingPage extends Page {
         while(movieCatalog.getItem(i) != null){
             m = movieCatalog.getItem(i);
             if(m.getName().equals(movieName)){
-                m.toCatalogItemString();
+                System.out.println("--------------------------");
+                System.out.printf("%s", m.toCatalogItemString());
+                System.out.println("--------------------------");
                 return;
             }
 

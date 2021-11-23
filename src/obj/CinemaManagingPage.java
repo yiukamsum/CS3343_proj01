@@ -132,7 +132,7 @@ public class CinemaManagingPage extends Page {
         
         System.out.println("(Enter -1 to go back)");
         do {
-            System.out.printf("Enter the id of the cinema you want to remove: ");
+            System.out.printf("Enter the item number of the cinema you want to remove: ");
 
             input = getInputStream().nextInt();
             getInputStream().nextLine();
