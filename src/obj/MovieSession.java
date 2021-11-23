@@ -119,18 +119,21 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
         int startTimeCompare = this.startTime.compareTo(session.startTime);
         int endTimeCompare  = thisEndTime.compareTo(thatEndTime);
 
-
         // if whole of time section of this session is in that of other session
         if(startTimeCompare >= 0 && endTimeCompare <= 0) { return true; }
+
 
         // reverse of the pervious
         if(startTimeCompare <= 0 && endTimeCompare >= 0) { return true; }
 
+
         // if the start of other session is in the time section of this session
         if(startTimeCompare <= 0 && thisEndTime.compareTo(session.startTime) > 0) { return true; }
 
+
         // reverse of the pervious
-        if(startTimeCompare >= 0 && thatEndTime.compareTo(this.startTime) < 0) { return true; }
+        if(startTimeCompare >= 0 && thatEndTime.compareTo(this.startTime) > 0) { return true; }
+
 
         return false;
     }
