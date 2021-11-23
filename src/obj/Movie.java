@@ -37,7 +37,7 @@ public class Movie implements Comparable<Movie>, CatalogItem{
         output = output + "\tMovie ID: " + movieID + "\n";
         output = output + "\tName: " + name + "\n";
         output = output + "\tRelease Date " + releaseDate.toString() + "\n";
-        output = output + "\tActor List: \n";
+        output = output + "\tActor List: ";
         
         for(String s: actorList){
             output = output + s + " ";
