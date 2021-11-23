@@ -22,24 +22,28 @@ public class testCinemaManagingPage {
 	@Test
 	public void testDisplay() {
 
-		String input="4\n\n";
+		String input="4\n-1\n";
 		System.setIn(new ByteArrayInputStream(input.getBytes()));
 
-		
 		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outContent));
 		
 		CinemaManagingPage cinemaManagingPage=new CinemaManagingPage(new AdminConsole());
 		cinemaManagingPage.display();	
 	
-		String expecString="\n===Start Page===\n"+
-                "Login As:\n"+    
-                "(1) Member\n"+    
-                "(2) Admin\n"+
-                "-------------\n"+
-                "Enter -1 to exit\n"+""+"\nInvalid Input\n\n";
+		String expecString= "\n===Manage Cinema===\n"+
+                "(1) Show Cinema List\n"+          
+                "(2) Add Cinema\n"+          
+                "(3) Remove Cinema\n"+
+                "(-1) Leave this page\n"+   "Invalid Input\n"+
+                
+                "\n===Manage Cinema===\n"+
+                "(1) Show Cinema List\n"+          
+                "(2) Add Cinema\n"+          
+                "(3) Remove Cinema\n"+
+                "(-1) Leave this page\n";
 		
-		assertEquals( expecString,outContent.toString().trim());
+		assertEquals( expecString,outContent.toString());
 
 
 		
