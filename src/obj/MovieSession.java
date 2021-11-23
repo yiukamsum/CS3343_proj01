@@ -1,5 +1,7 @@
 package obj;
 
+import java.util.DuplicateFormatFlagsException;
+
 public class MovieSession implements Comparable<MovieSession>, CatalogItem{
 
     private int sessionID;
@@ -22,12 +24,47 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
         return this.movie;
     }
 
+    public int getMovieID() {
+        return this.movie.getMovieID();
+    }
+
     public Theatre getTheatre() {
         return this.theatre;
     }
 
     public int getSessionID() {
         return this.sessionID;
+    }
+
+    public String getMovieName() {
+        return this.movie.getName();
+    }
+
+    public String getCinemaName() {
+        return this.cinema.getName();
+    }
+
+    public int getTheatreID() {
+        return this.theatre.getTheatreID();
+    }
+
+    public String getStartTime() {
+        return this.startTime.toString();
+    }
+
+    public int getCinemaID() {
+        return this.cinema.getCinemaID();
+    }
+
+    public DateTime getEndTime() {
+        double duration = this.movie.getDuration();
+        int hourAdd = (int)(duration);
+        int minuteAdd = (int)(duration-hourAdd)*60;
+        DateTime endTime = DateTime.clone(this.startTime);
+        endTime.addMinute(minuteAdd);
+        endTime.addHour(hourAdd);
+        
+        return endTime;
     }
 
     public void takeSeat(String seat){
@@ -75,6 +112,29 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
         }
     }
 
+    public boolean doTimeOverlap(MovieSession session) {
+        DateTime thisEndTime = this.getEndTime();
+        DateTime thatEndTime = session.getEndTime();
+
+        int startTimeCompare = this.startTime.compareTo(session.startTime);
+        int endTimeCompare  = thisEndTime.compareTo(thatEndTime);
+
+
+        // if whole of time section of this session is in that of other session
+        if(startTimeCompare >= 0 && endTimeCompare <= 0) { return true; }
+
+        // reverse of the pervious
+        if(startTimeCompare <= 0 && endTimeCompare >= 0) { return true; }
+
+        // if the start of other session is in the time section of this session
+        if(startTimeCompare <= 0 && thisEndTime.compareTo(session.startTime) > 0) { return true; }
+
+        // reverse of the pervious
+        if(startTimeCompare >= 0 && thatEndTime.compareTo(this.startTime) < 0) { return true; }
+
+        return false;
+    }
+
 
 
     @Override 
@@ -92,25 +152,4 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
             "\tDuration: \t%.2f"
         , movie.getName(), cinema.getName(), theatre.getTheatreID(), startTime.toString(), movie.getDuration());
     }
-
-    public String getMovieName() {
-        return this.movie.getName();
-    }
-
-    public String getCinemaName() {
-        return this.cinema.getName();
-    }
-
-    public int getTheatreID() {
-        return this.theatre.getTheatreID();
-    }
-
-    public String getStartTime() {
-        return this.startTime.toString();
-    }
-
-    public int getCinemaID() {
-        return this.cinema.getCinemaID();
-    }
-   
 }

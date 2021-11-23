@@ -87,8 +87,15 @@ public class SessionManagingPage extends Page {
         if(startTime == null) { return; }
 
 
+        MovieSession session = new MovieSession(action.getNextSessionID(), cinema, theatre, movie, startTime);
+
+        if(!action.isSessionAvailable(session)) {
+            System.out.println("\n> The entered session is overlap with other session!");
+            return;
+        }
+
         // create a movie session record
-        action.createSessionRecord(movie, cinema, theatre, startTime);
+        action.addMovieSession(session);
 
         System.out.println("\n> Create session success");
     }

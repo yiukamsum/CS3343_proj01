@@ -27,11 +27,13 @@ public class Database {
         movieList = new ArrayList<Movie>();
         ArrayList<String> actorList = new ArrayList<String>();
         actorList.add("Actor A");
-        movieList.add(new Movie(1, "Movie A", DateTime.today(), 2.0, actorList));
+        movieList.add(new Movie(1, "Movie A", 
+                                new DateTime(2020, 10, 15, 13, 30), 
+                                2.0, actorList));
 
         sessionList = new ArrayList<MovieSession>();
         sessionList.add(
-            new MovieSession(1, cinemaList.get(0), cinemaList.get(0).getTheatre(1), movieList.get(0), DateTime.now())
+            new MovieSession(1, cinemaList.get(0), cinemaList.get(0).getTheatre(1), movieList.get(0), new DateTime(2020, 10, 15, 13, 30))
         );
 
         historyList = new ArrayList<PurchaseHistory>();

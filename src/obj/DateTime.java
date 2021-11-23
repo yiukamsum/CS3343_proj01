@@ -23,6 +23,44 @@ public class DateTime implements Comparable<DateTime>{
         this.day = day;
     }
 
+    public void addMonth(int monthAdd) {
+        this.month += monthAdd;
+        if(this.month >= 13) {
+            int yearAdd = this.year/12;
+            this.month -= 12*yearAdd;
+            if(this.month == 0) { this.month = 1; }
+            this.year += yearAdd;
+        }
+    }
+
+    public void addDay(int dayAdd) {
+        this.day += dayAdd;
+        if(this.day >= 32) {
+            int monthAdd = this.day/31;
+            this.day -= 31*monthAdd;
+            if(this.day == 0) { this.day = 1; }
+            addMonth(monthAdd);
+        }
+    }
+
+    public void addHour(int hourAdd) {
+        this.hour += hourAdd;
+        if(this.hour >= 24) {
+            int dayAdd = this.hour/24;
+            this.hour -= 24*dayAdd;
+            addDay(dayAdd);
+        }
+    }
+
+    public void addMinute(int minuteAdd) {
+        this.minute += minuteAdd;
+        if(this.minute >= 60) {
+            int hourAdd = this.minute/60;
+            this.minute -= 60*hourAdd;
+            addHour(hourAdd);
+        }
+    }
+
     @Override
     public String toString(){
         if(hour == 0 && minute == 0){
@@ -30,6 +68,16 @@ public class DateTime implements Comparable<DateTime>{
         }else{
             return year + "-" + month + "-" + day + " " + hour + ":" + minute;
         }
+    }
+
+    public static DateTime clone(DateTime dateTime) {
+        return new DateTime(
+            dateTime.year,
+            dateTime.month,
+            dateTime.day,
+            dateTime.hour,
+            dateTime.minute
+        );
     }
 
     public static DateTime today(){
@@ -57,7 +105,12 @@ public class DateTime implements Comparable<DateTime>{
 
     @Override
     public int compareTo(DateTime dateTime){
-        return this.year - dateTime.year;
+        if(this.year != dateTime.year) { return this.year-dateTime.year; }
+        if(this.month != dateTime.month) { return this.month-dateTime.month; }
+        if(this.day != dateTime.day) { return this.day-dateTime.day; }
+        if(this.hour != dateTime.hour) { return this.hour-dateTime.hour; }
+        if(this.minute != dateTime.minute) { return this.minute-dateTime.minute; }
+        return 0;
     }
 
 }

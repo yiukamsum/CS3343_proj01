@@ -9,11 +9,13 @@ public class MovieSessionManageAction extends DbAction {
         this.sessionList = getDatabase().getMovieSessionList();
     }
 
-    public MovieSession createSessionRecord(Movie movie, Cinema cinema, Theatre theatre, DateTime startTime) {
-        int sessionID = sessionList.size()+1;
-        MovieSession session = new MovieSession(sessionID, cinema, theatre, movie, startTime);
+    public void addMovieSession(MovieSession session) {
         sessionList.add(session);
-        return session;
+    }
+
+    public int getNextSessionID() {
+        if(sessionList.size() == 0) { return 1; }
+        return sessionList.get(sessionList.size()-1).getSessionID()+1;
     }
 
     public void removeMovieSessionById(int sessionId) {
@@ -34,5 +36,26 @@ public class MovieSessionManageAction extends DbAction {
                 i--;
             }
         }
+    }
+
+    public ArrayList<MovieSession> getSessionByTheatre(int cinemaID, int theatreID) {
+        ArrayList<MovieSession> res = new ArrayList<>();
+        for(MovieSession session : sessionList) {
+            if(session.getCinemaID() != cinemaID) { continue; }
+            if(session.getTheatreID() != theatreID) { continue; }
+            res.add(session);
+        }   
+        return res;
+    }
+
+    // check if the theatre is available in 
+    public boolean isSessionAvailable(MovieSession checkingSession) {
+        ArrayList<MovieSession> theatreSession_list = getSessionByTheatre(checkingSession.getCinemaID(), checkingSession.getTheatreID());
+        for(MovieSession session : theatreSession_list) {
+            if(session.doTimeOverlap(checkingSession)){
+                return false;
+            }
+        }
+        return true;
     }
 }
