@@ -138,8 +138,10 @@ public class MovieManagingPage extends Page {
          System.out.println("Enter the actor name. Enter Done to end the action.");
          while(!input.equals("Done")) {
              input = enterString("");
-        	 actorList.add(input);
+             actorList.add(input);
          }
+	    
+	 actorList.remove(actorList.size() - 1);
          
          action.addMovie(movieName, releaseDate, duration, actorList);
 	}
