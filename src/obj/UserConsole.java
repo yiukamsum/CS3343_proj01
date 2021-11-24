@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class UserConsole {
 
     // the scanner for accpet user input
-    private final static Scanner userInputStream = new Scanner(System.in);
+    private final Scanner userInputStream = new Scanner(System.in);
 
     public Scanner getInputStream() {
         return userInputStream;
