@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class MovieSessionManageAction extends DbAction {
     ArrayList<MovieSession> sessionList;
 
-    MovieSessionManageAction(Admin admin) {
+    public MovieSessionManageAction(Admin admin) {
         this.sessionList = getDatabase().getMovieSessionList();
     }
 
