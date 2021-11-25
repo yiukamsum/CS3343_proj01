@@ -49,10 +49,10 @@ class testPurchaseTicket {
 		Movie M01 = new Movie(1, "Movie01", Date, 1.01, actorList);
 		MovieSession session01 = new MovieSession(1, C01, T01, M01, Date);
 		
-		Ticket ticket1 = new Ticket(new Adult(), session01, "A01");
-		Ticket ticket2 = new Ticket(new Child(), session01, "A01");
-		Ticket ticket3 = new Ticket(new Elderly(), session01, "A01");
-		Ticket ticket4 = new Ticket(new Student(), session01, "A01");
+		Ticket ticket1 = new Ticket(Adult.getInstance(), session01, "A01");
+		Ticket ticket2 = new Ticket(Child.getInstance(), session01, "A01");
+		Ticket ticket3 = new Ticket(Elderly.getInstance(), session01, "A01");
+		Ticket ticket4 = new Ticket(Student.getInstance(), session01, "A01");
 		ArrayList<Ticket> ticketList = new ArrayList<Ticket>();
 		ticketList.add(ticket1);
 		ticketList.add(ticket2);

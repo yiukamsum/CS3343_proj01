@@ -17,15 +17,15 @@ class testChild {
 
 	@Test
 	void testGetPrice() {
-		TicketType Child = new Child();
-		double result = Child.getPrice();
+		TicketType child = Child.getInstance();
+		double result = child.getPrice();
 		assertEquals(75.00, result);
 	}
 	
 	@Test
 	void testGetType() {
-		TicketType Child = new Child();
-		String result = Child.getType();
+		TicketType child = Child.getInstance();
+		String result = child.getType();
 		assertEquals("Child", result);
 	}
 

@@ -16,15 +16,15 @@ class testElderly {
 
 	@Test
 	void testGetPrice() {
-		TicketType Elderly = new Elderly();
-		double result = Elderly.getPrice();
+		TicketType elderly = Elderly.getInstance();
+		double result = elderly.getPrice();
 		assertEquals(70.00, result);
 	}
 	
 	@Test
 	void testGetType() {
-		TicketType Elderly = new Elderly();
-		String result = Elderly.getType();
+		TicketType elderly = Elderly.getInstance();
+		String result = elderly.getType();
 		assertEquals("Elderly", result);
 	}
 

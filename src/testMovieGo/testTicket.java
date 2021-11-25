@@ -30,7 +30,7 @@ class testTicket {
 		ArrayList<String> actorList = new ArrayList<String>();
 		Movie M01 = new Movie(1, "Movie01", Date, 1.01, actorList);
 		MovieSession session01 = new MovieSession(1, C01, T01, M01, Date);
-		Ticket ticket1 = new Ticket(new Adult(), session01, "A01");
+		Ticket ticket1 = new Ticket(Adult.getInstance(), session01, "A01");
 		String result = ticket1.getType();
 		assertEquals("Adult", result);		
 	}
@@ -43,7 +43,7 @@ class testTicket {
 		ArrayList<String> actorList = new ArrayList<String>();
 		Movie M01 = new Movie(1, "Movie01", Date, 1.01, actorList);
 		MovieSession session01 = new MovieSession(1, C01, T01, M01, Date);
-		Ticket ticket1 = new Ticket(new Adult(), session01, "A01");
+		Ticket ticket1 = new Ticket(Adult.getInstance(), session01, "A01");
 		double result = ticket1.getPrice();
 		assertEquals(100.00, result);		
 	}
@@ -56,7 +56,7 @@ class testTicket {
 		ArrayList<String> actorList = new ArrayList<String>();
 		Movie M01 = new Movie(1, "Movie01", Date, 1.01, actorList);
 		MovieSession session01 = new MovieSession(1, C01, T01, M01, Date);
-		Ticket ticket1 = new Ticket(new Adult(), session01, "A01");
+		Ticket ticket1 = new Ticket(Adult.getInstance(), session01, "A01");
 		MovieSession result = ticket1.getSession();
 		assertEquals(session01, result);		
 	}
@@ -69,7 +69,7 @@ class testTicket {
 		ArrayList<String> actorList = new ArrayList<String>();
 		Movie M01 = new Movie(1, "Movie01", Date, 1.01, actorList);
 		MovieSession session01 = new MovieSession(1, C01, T01, M01, Date);
-		Ticket ticket1 = new Ticket(new Adult(), session01, "A01");
+		Ticket ticket1 = new Ticket(Adult.getInstance(), session01, "A01");
 		String result = ticket1.getSeat();
 		assertEquals("A01", result);		
 	}

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import obj.Adult;
 import obj.TicketType;
 
+
 class testAdult {
 
 	@BeforeEach
@@ -16,15 +17,15 @@ class testAdult {
 
 	@Test
 	void testGetPrice() {
-		TicketType Adult = new Adult();
-		double result = Adult.getPrice();
+		TicketType adult = Adult.getInstance();
+		double result = adult.getPrice();
 		assertEquals(100.00, result);
 	}
 	
 	@Test
 	void testGetType() {
-		TicketType Adult = new Adult();
-		String result = Adult.getType();
+		TicketType adult = Adult.getInstance();
+		String result = adult.getType();
 		assertEquals("Adult", result);
 	}
 
