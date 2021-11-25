@@ -19,7 +19,7 @@ public class testDateTime {
 	public void testToString2() {
 		DateTime dTime=new DateTime(2021, 11, 10,0,0);
 		
-		assertEquals("2021-11-10", dTime.toString());
+		assertEquals("2021-11-10 00:00", dTime.toString());
 		
 	}
 	@Test
