@@ -7,7 +7,7 @@ public class Adult implements TicketType {
 	private Adult() {
 		
 	}
-	public Adult getInstance() {
+	public static Adult getInstance() {
 		return instance;
 	}
 	

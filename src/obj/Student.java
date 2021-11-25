@@ -8,7 +8,7 @@ public class Student implements TicketType {
 	private Student() {
 		
 	}
-	public Student getInstance() {
+	public static Student getInstance() {
 		return instance;
 	}
 	

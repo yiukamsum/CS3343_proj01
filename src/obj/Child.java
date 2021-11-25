@@ -7,7 +7,7 @@ public class Child implements TicketType {
 	private Child() {
 		
 	}
-	public Child getInstance() {
+	public static Child getInstance() {
 		return instance;
 	}
 	

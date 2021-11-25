@@ -8,7 +8,7 @@ public class Elderly implements TicketType {
 	private Elderly() {
 		
 	}
-	public Elderly getInstance() {
+	public static Elderly getInstance() {
 		return instance;
 	}
 	
