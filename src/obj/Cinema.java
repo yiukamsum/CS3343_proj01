@@ -35,7 +35,7 @@ public class Cinema implements Comparable<Cinema>, CatalogItem{
 	public void addTheatre(Theatre theatre) {
 	    if(!theatreList.isEmpty()){
 	        for(Theatre t: theatreList){
-				if(t == theatre){
+				if(t == theatre||t.getTheatreID()==theatre.getTheatreID()){
 					return;
 				}
 			}

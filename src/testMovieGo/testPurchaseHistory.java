@@ -27,7 +27,7 @@ class testPurchaseHistory {
 		
 		//PurchaseHistory res = new PurchaseHistory(1, new Member(1, "Aaron", "123@gmail.com", "123"), new Ticket(new Adult(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
 		
-		PurchaseHistory test = new PurchaseHistory(1, new Member(1, "Aaron", "123@gmail.com", "123"), new Ticket(new Adult(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
+		PurchaseHistory test = new PurchaseHistory(1, new Member(1, "Aaron", "123@gmail.com", "123"), new Ticket(Adult.getInstance(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
 		
 		int res = test.getHistoryID();
 
@@ -43,7 +43,7 @@ class testPurchaseHistory {
 		
 		//PurchaseHistory res = new PurchaseHistory(1, new Member(1, "Aaron", "123@gmail.com", "123"), new Ticket(new Adult(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
 		
-		PurchaseHistory test = new PurchaseHistory(1, new Member(1, "Aaron", "123@gmail.com", "123"), new Ticket(new Adult(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
+		PurchaseHistory test = new PurchaseHistory(1, new Member(1, "Aaron", "123@gmail.com", "123"), new Ticket(Adult.getInstance(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
 		
 		int res = test.getMemberID();
 
@@ -60,9 +60,9 @@ class testPurchaseHistory {
 		
 		//PurchaseHistory res = new PurchaseHistory(1, new Member(1, "Aaron", "123@gmail.com", "123"), new Ticket(new Adult(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
 		
-		PurchaseHistory test = new PurchaseHistory(1, new Member(1, "Aaron", "123@gmail.com", "123"), new Ticket(new Adult(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
+		PurchaseHistory test = new PurchaseHistory(1, new Member(1, "Aaron", "123@gmail.com", "123"), new Ticket(Adult.getInstance(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
 	
-		PurchaseHistory testOther = new PurchaseHistory(1, new Member(2, "Peter", "12sdsa3@gmail.com", "abc"), new Ticket(new Adult(), selectSession, "A1"), new DateTime(2021, 11, 23, 11, 11));
+		PurchaseHistory testOther = new PurchaseHistory(1, new Member(2, "Peter", "12sdsa3@gmail.com", "abc"), new Ticket(Adult.getInstance(), selectSession, "A1"), new DateTime(2021, 11, 23, 11, 11));
 		
 		int res = test.compareTo(testOther);
 
@@ -78,7 +78,7 @@ class testPurchaseHistory {
 		
 		//PurchaseHistory res = new PurchaseHistory(1, new Member(1, "Aaron", "123@gmail.com", "123"), new Ticket(new Adult(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
 		
-		PurchaseHistory test = new PurchaseHistory(1, new Member(1, "Aaron", "123@gmail.com", "123"), new Ticket(new Adult(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
+		PurchaseHistory test = new PurchaseHistory(1, new Member(1, "Aaron", "123@gmail.com", "123"), new Ticket(Adult.getInstance(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
 		
 		String res = test.toCatalogItemString();
 		
@@ -88,7 +88,7 @@ class testPurchaseHistory {
 						"\tTicket Type: \t%s\n"+
 			            "\tTicket Price: \t%f\n"+
 						"\tPurchase Date: \t%s\n"
-					, 1, new Member(1, "Aaron", "123@gmail.com", "123").getMemberId(), new Ticket(new Adult(), selectSession, "A0").getType(), new Ticket(new Adult(), selectSession, "A0").getPrice(), new DateTime(2021, 11, 23, 11, 11).toString());
+					, 1, new Member(1, "Aaron", "123@gmail.com", "123").getMemberId(), new Ticket(Adult.getInstance(), selectSession, "A0").getType(), new Ticket(Adult.getInstance(), selectSession, "A0").getPrice(), new DateTime(2021, 11, 23, 11, 11).toString());
 
 		assertEquals(output, res);		
 	}
