@@ -16,9 +16,6 @@ public abstract class Login extends DbAction {
 
         Account loginAccount = null;
 
-        // for skipping the \n in the buffer
-        console.getInputStream().nextLine();
-
         System.out.printf("\n====Login====\n");
 
         do{
