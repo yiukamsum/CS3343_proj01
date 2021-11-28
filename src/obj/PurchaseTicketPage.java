@@ -153,16 +153,16 @@ public class PurchaseTicketPage extends Page {
 
             switch(inputType) {
                 case 1:
-                    typeList.add(new Adult());
+                    typeList.add(Adult.getInstance());
                     break;
                 case 2:
-                    typeList.add(new Student());
+                    typeList.add(Student.getInstance());
                     break;
                 case 3:
-                    typeList.add(new Elderly());
+                    typeList.add(Elderly.getInstance());
                     break;
                 case 4:
-                    typeList.add(new Child());
+                    typeList.add(Child.getInstance());
                     break;  
                 case -1:
                     return null;              
