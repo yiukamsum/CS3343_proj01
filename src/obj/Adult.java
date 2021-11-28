@@ -4,9 +4,8 @@ public class Adult implements TicketType {
 	private static Adult instance=new Adult();
 	
 	
-	private Adult() {
-		
-	}
+	private Adult() {}
+  
 	public static Adult getInstance() {
 		return instance;
 	}

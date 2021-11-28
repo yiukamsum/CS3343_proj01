@@ -28,7 +28,7 @@ public class DateTime implements Comparable<DateTime>{
     public void addMonth(int monthAdd) {
         this.month += monthAdd;
         if(this.month >= 13) {
-            int yearAdd = this.year/12;
+            int yearAdd = this.month/12;
             this.month -= 12*yearAdd;
             if(this.month == 0) { this.month = 1; }
             this.year += yearAdd;
