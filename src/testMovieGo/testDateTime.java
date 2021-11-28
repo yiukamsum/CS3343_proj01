@@ -1,11 +1,9 @@
 package testMovieGo;
 import static org.junit.Assert.*;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 import org.junit.Test;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.conversions.DateConversion;
 
 import obj.DateTime;
 public class testDateTime {

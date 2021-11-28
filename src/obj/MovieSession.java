@@ -71,13 +71,7 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
         int row = (int)seat.charAt(0)-65;
         int col = (int)seat.charAt(1)-(int)('0');
 
-        if(vancacy[row][col] == false){
-            vancacy[row][col] = true;
-            // System.out.println("Book the seat successfully!");
-        }else{
-            // System.out.println("The seat is already booked!");
-        }
-
+        vancacy[row][col] = true;
     }
 
     public boolean isSeatEmpty(String seat) {
