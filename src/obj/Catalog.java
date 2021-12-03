@@ -28,6 +28,10 @@ public class Catalog<T extends CatalogItem> {
         return itemList.get(idx);
     }
 
+    public int size() {
+        return itemList.size();
+    }
+
     protected ArrayList<T> getItemList() {
         return this.itemList;
     }
