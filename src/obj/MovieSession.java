@@ -20,18 +20,6 @@ public class MovieSession implements Comparable<MovieSession>, CatalogItem{
         this.vancacy = new boolean[theatre.getRowNum()][theatre.getColNum()];
     }
 
-    public Movie getMovie() {
-        return this.movie;
-    }
-
-    public int getMovieID() {
-        return this.movie.getMovieID();
-    }
-
-    public Theatre getTheatre() {
-        return this.theatre;
-    }
-
     public int getSessionID() {
         return this.sessionID;
     }
