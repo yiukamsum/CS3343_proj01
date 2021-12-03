@@ -41,7 +41,7 @@ public class PurchaseTicket {
 		return amount;
 	}
 
-	private PaymentMethod selectPaymentMethod() {
+	public PaymentMethod selectPaymentMethod() {
         int input = 0;
         PaymentMethod method = null;
 
