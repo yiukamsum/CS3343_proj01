@@ -239,4 +239,48 @@ public class testMovieSession {
 
         assertEquals(false, ms1.doTimeOverlap(ms2));
     }
+
+
+    /* compare to */
+    @Test
+    public void testCompareTo() {
+        MovieSession ms1 = getTestMovieSession();
+
+        /* create a session do not overlap with ms1 */
+        MovieSession ms2;
+        Cinema testCinema;
+        Theatre testTheatre;
+        Movie testMovie;
+        DateTime testStartTime;
+
+        testCinema = new Cinema(1, "loc A", "Cinema A", "12345678");
+        testTheatre = new Theatre(1, 5, 5);
+        testCinema.addTheatre(testTheatre);
+
+        testMovie = new Movie(1, "Movie A", DateTime.today(), 2, new ArrayList<String>());
+        testStartTime = new DateTime(2020, 11, 30, 2, 30);
+
+        ms2 = new MovieSession(2, testCinema, testTheatre, testMovie, testStartTime);
+
+
+        assertEquals(true, ms1.compareTo(ms2) < 0);
+    }
+
+
+    /* toCatalogItemString */
+    @Test
+    public void testToCatalogItemString() {
+        MovieSession ms = getTestMovieSession();
+
+        String actual   = ms.toCatalogItemString();
+        String expected = String.format(
+            "\tMovie: \t\t%s\n"+
+            "\tCinema: \t%s\n"+
+            "\tTheatre: \t%s\n"+
+            "\tStart time: \t%s\n"+
+            "\tDuration: \t%.2f"
+        , "Movie A", "Cinema A", "1", "2020-11-30 9:30", 2.00);
+
+        assertEquals(expected, actual);
+    }
 }
