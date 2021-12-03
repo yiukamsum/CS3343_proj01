@@ -53,9 +53,9 @@ public class testMovie {
 		String result = movie.toCatalogItemString();
 		String expectation = String.format("\tMovie ID: 3\n" +
 				                           "\tName: Movie name 4\n" +
-				                           "\tRelease Date: 2021-10-24\n" +
-				                           "\tActor List:Anna Ben Sam Simon Harry\n" +
-				                           "\ttDuration: 2.00");
+				                           "\tRelease Date 2021-10-24 00:00\n" +
+				                           "\tActor List: Anna Ben Sam Simon Harry \n" +
+				                           "\tDuration: 2.0\n");
 		
 		assertEquals(result, expectation);
 	}
