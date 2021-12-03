@@ -32,7 +32,7 @@ class testHistoryManageAction {
 		actorList.add("Actor A");
 		MovieSession selectSession = new MovieSession(1, new Cinema(1, "loc A", "Cinema A", "12345678"), new Theatre(1, 5, 5) , new Movie(1, "Movie A", new DateTime(2021, 11, 23, 11, 11), 2.0, actorList), DateTime.today());
 		
-		PurchaseHistory res = new PurchaseHistory(1, new Member(1, "Aaron", "123@gmail.com", "123"), new Ticket(new Adult(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
+		PurchaseHistory res = new PurchaseHistory(1, new Member(1, "Aaron", "123@gmail.com", "123"), new Ticket(Adult.getInstance(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
 		
 		test.addHistory(res);	
 		
@@ -51,7 +51,7 @@ class testHistoryManageAction {
 		actorList.add("Actor A");
 		MovieSession selectSession = new MovieSession(1, new Cinema(1, "loc A", "Cinema A", "12345678"), new Theatre(1, 5, 5) , new Movie(1, "Movie A", new DateTime(2021, 11, 23, 11, 11), 2.0, actorList), DateTime.today());
 		
-		PurchaseHistory res = new PurchaseHistory(1, new Member(3, "Aaron", "123@gmail.com", "123"), new Ticket(new Adult(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
+		PurchaseHistory res = new PurchaseHistory(1, new Member(3, "Aaron", "123@gmail.com", "123"), new Ticket(Adult.getInstance(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
 		
 		int ans = test.getNextHistoryID(1);	
 		
@@ -69,7 +69,7 @@ class testHistoryManageAction {
 		actorList.add("Actor A");
 		MovieSession selectSession = new MovieSession(1, new Cinema(1, "loc A", "Cinema A", "12345678"), new Theatre(1, 5, 5) , new Movie(1, "Movie A", new DateTime(2021, 11, 23, 11, 11), 2.0, actorList), DateTime.today());
 		
-		PurchaseHistory res = new PurchaseHistory(1, new Member(3, "Aaron", "123@gmail.com", "123"), new Ticket(new Adult(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
+		PurchaseHistory res = new PurchaseHistory(1, new Member(3, "Aaron", "123@gmail.com", "123"), new Ticket(Adult.getInstance(), selectSession, "A0"), new DateTime(2021, 11, 23, 11, 11));
 		
 		//test.getHistory();	
 		

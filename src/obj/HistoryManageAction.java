@@ -7,7 +7,7 @@ public class HistoryManageAction extends DbAction {
 	
 	ArrayList<PurchaseHistory> historyList;
 
-	HistoryManageAction() {
+	public HistoryManageAction() {
 		historyList = getDatabase().getPurchaseHistoryList();
 	}
 
