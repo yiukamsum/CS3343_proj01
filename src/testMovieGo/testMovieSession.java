@@ -1,5 +1,6 @@
 package testMovieGo;
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -7,6 +8,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import org.junit.Test;
+import org.junit.jupiter.api.TestFactory;
 
 import obj.MovieSession;
 import obj.Cinema;
@@ -64,5 +66,177 @@ public class testMovieSession {
         ms.printSeat();
 
 		assertEquals(expected, outContent.toString());
+    }
+
+    /* isSeatEmpty */
+    @Test
+    public void testIsSeatEmpty() {
+        MovieSession ms = getTestMovieSession();
+        ms.takeSeat("C2");
+        boolean isEmpty = ms.isSeatEmpty("C2");
+
+        assertEquals(false, isEmpty);
+    }
+
+    @Test
+    public void testIsSeatEmpty2() {
+        MovieSession ms = getTestMovieSession();
+        ms.takeSeat("C2");
+        boolean isEmpty = ms.isSeatEmpty("C3");
+
+        assertEquals(true, isEmpty);
+    }
+
+
+    /* isFull */
+    @Test
+    public void testIsFull() {
+        MovieSession ms = getTestMovieSession();
+
+        assertEquals(false, ms.isFull());
+    }
+
+    @Test
+    public void testIsFull2() {
+        MovieSession testSession;
+        Cinema testCinema;
+        Theatre testTheatre;
+        Movie testMovie;
+        DateTime testStartTime;
+
+        testCinema = new Cinema(1, "loc A", "Cinema A", "12345678");
+        testTheatre = new Theatre(1, 1, 1);
+        testCinema.addTheatre(testTheatre);
+
+        testMovie = new Movie(1, "Movie A", DateTime.today(), 2, new ArrayList<String>());
+        testStartTime = new DateTime(2020, 11, 30, 9, 30);
+
+        testSession = new MovieSession(1, testCinema, testTheatre, testMovie, testStartTime);
+
+        testSession.takeSeat("A0");
+
+        assertEquals(true, testSession.isFull());
+    }
+
+
+    /* doTimeOverlap */
+    @Test
+    public void testDoTimeOverlap() {
+        MovieSession ms1 = getTestMovieSession();
+
+        /* create a session with early start time and later end time */
+        MovieSession ms2;
+        Cinema testCinema;
+        Theatre testTheatre;
+        Movie testMovie;
+        DateTime testStartTime;
+
+        testCinema = new Cinema(1, "loc A", "Cinema A", "12345678");
+        testTheatre = new Theatre(1, 5, 5);
+        testCinema.addTheatre(testTheatre);
+
+        testMovie = new Movie(1, "Movie A", DateTime.today(), 4, new ArrayList<String>());
+        testStartTime = new DateTime(2020, 11, 30, 8, 30);
+
+        ms2 = new MovieSession(1, testCinema, testTheatre, testMovie, testStartTime);
+
+
+        assertEquals(true, ms1.doTimeOverlap(ms2));
+    }
+
+    @Test
+    public void testDoTimeOverlap2() {
+        MovieSession ms1 = getTestMovieSession();
+
+        /* create a session with early start time and later end time */
+        MovieSession ms2;
+        Cinema testCinema;
+        Theatre testTheatre;
+        Movie testMovie;
+        DateTime testStartTime;
+
+        testCinema = new Cinema(1, "loc A", "Cinema A", "12345678");
+        testTheatre = new Theatre(1, 5, 5);
+        testCinema.addTheatre(testTheatre);
+
+        testMovie = new Movie(1, "Movie A", DateTime.today(), 4, new ArrayList<String>());
+        testStartTime = new DateTime(2020, 11, 30, 8, 30);
+
+        ms2 = new MovieSession(1, testCinema, testTheatre, testMovie, testStartTime);
+
+
+        assertEquals(true, ms2.doTimeOverlap(ms1));
+    }
+
+    @Test
+    public void testDoTimeOverlap3() {
+        MovieSession ms1 = getTestMovieSession();
+
+        /* create a session with early start time and end in ms1 */
+        MovieSession ms2;
+        Cinema testCinema;
+        Theatre testTheatre;
+        Movie testMovie;
+        DateTime testStartTime;
+
+        testCinema = new Cinema(1, "loc A", "Cinema A", "12345678");
+        testTheatre = new Theatre(1, 5, 5);
+        testCinema.addTheatre(testTheatre);
+
+        testMovie = new Movie(1, "Movie A", DateTime.today(), 2, new ArrayList<String>());
+        testStartTime = new DateTime(2020, 11, 30, 8, 30);
+
+        ms2 = new MovieSession(1, testCinema, testTheatre, testMovie, testStartTime);
+
+
+        assertEquals(true, ms2.doTimeOverlap(ms1));
+    }
+
+    @Test
+    public void testDoTimeOverlap4() {
+        MovieSession ms1 = getTestMovieSession();
+
+        /* create a session with early start time and end in ms1 */
+        MovieSession ms2;
+        Cinema testCinema;
+        Theatre testTheatre;
+        Movie testMovie;
+        DateTime testStartTime;
+
+        testCinema = new Cinema(1, "loc A", "Cinema A", "12345678");
+        testTheatre = new Theatre(1, 5, 5);
+        testCinema.addTheatre(testTheatre);
+
+        testMovie = new Movie(1, "Movie A", DateTime.today(), 2, new ArrayList<String>());
+        testStartTime = new DateTime(2020, 11, 30, 8, 30);
+
+        ms2 = new MovieSession(1, testCinema, testTheatre, testMovie, testStartTime);
+
+
+        assertEquals(true, ms1.doTimeOverlap(ms2));
+    }
+
+    @Test
+    public void testDoTimeOverlap5() {
+        MovieSession ms1 = getTestMovieSession();
+
+        /* create a session do not overlap with ms1 */
+        MovieSession ms2;
+        Cinema testCinema;
+        Theatre testTheatre;
+        Movie testMovie;
+        DateTime testStartTime;
+
+        testCinema = new Cinema(1, "loc A", "Cinema A", "12345678");
+        testTheatre = new Theatre(1, 5, 5);
+        testCinema.addTheatre(testTheatre);
+
+        testMovie = new Movie(1, "Movie A", DateTime.today(), 2, new ArrayList<String>());
+        testStartTime = new DateTime(2020, 11, 30, 2, 30);
+
+        ms2 = new MovieSession(1, testCinema, testTheatre, testMovie, testStartTime);
+
+
+        assertEquals(false, ms1.doTimeOverlap(ms2));
     }
 }
