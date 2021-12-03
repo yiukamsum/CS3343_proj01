@@ -44,7 +44,7 @@ public class Movie implements Comparable<Movie>, CatalogItem{
         }
         
         output = output + "\n";
-        output = output + "\tDuration: " + duration + "\n\t";
+        output = output + "\tDuration: " + duration + "\n";
 
 
 
