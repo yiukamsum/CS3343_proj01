@@ -153,7 +153,6 @@ public class testCinemaManagingPage {
 
 		String input="3\n1\n-1\n";
 		System.setIn(new ByteArrayInputStream(input.getBytes()));
-		
 
 		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outContent));
@@ -169,10 +168,9 @@ public class testCinemaManagingPage {
                 
                 +"---Remove Cinema---\r\n"
                 + "(Enter -1 to go back)\r\n"
-                + "Enter the id of the cinema you want to remove: Delete Success\r\n"
-                + ""+
+                + "Enter the item number of the cinema you want to remove: Delete Success\r\n"
 				
-				"\n---Cinema Catalog---\r\n"
+				+"\n---Cinema Catalog---\r\n"
 				+"1. 	Cinema ID: 	2\n"
 				+ "	Cinema Name: 	Hello Cinema\n"
 				+ "	Location: 	Mong Kok\n"
