@@ -15,12 +15,23 @@ import obj.*;
 
 public class testCinemaManageAction {
 
-	
+	private void restoreData() {
+		getCinemaAction action = new getCinemaAction();
+		ArrayList<Cinema> cinemaList = action.getCinemaList();
+
+		cinemaList.clear();
+
+        Cinema cinema = new Cinema(1, "loc A", "Cinema A", "12345678");
+        cinema.addTheatre(new Theatre(1, 5, 5));
+        cinemaList.add(cinema);
+	}	
 
 	
 	@Test
 
 	public void testCreateCinemaRecord() {
+		restoreData();
+
 		CinemaManageAction cManageAction=new CinemaManageAction(Admin.getInstance());
 		Database  dbInstance=Database.connectDB(cManageAction);
 		
@@ -36,6 +47,8 @@ public class testCinemaManageAction {
 	@Test
 
 	public void testRemoveCinema() {
+		restoreData();
+
 		CinemaManageAction cManageAction=new CinemaManageAction(Admin.getInstance());
 		Database dbInstance=Database.connectDB(cManageAction);
 		
@@ -52,6 +65,8 @@ public class testCinemaManageAction {
 	@Test
 
 	public void testAddTheatre() {
+		restoreData();
+
 		CinemaManageAction cManageAction=new CinemaManageAction(Admin.getInstance());
 		Database dbInstance=Database.connectDB(cManageAction);
 		
@@ -69,6 +84,8 @@ public class testCinemaManageAction {
 	@Test
 
 	public void testRemoveTheatre() {
+		restoreData();
+
 		CinemaManageAction cManageAction=new CinemaManageAction(Admin.getInstance());
 		Database dbInstance=Database.connectDB(cManageAction);
 		
@@ -78,14 +95,17 @@ public class testCinemaManageAction {
 		Cinema newAddedCinema= cManageAction.createCinemaRecord("Happy Cinema", "Mong Kok", "91234567",threatreArrayList);
 		
 		Theatre t2=new Theatre(2,4,4);
-		cManageAction.addTheatre(3,t2 );
+		cManageAction.addTheatre(3, t2);
 		
 		cManageAction.removeTheatre(3, t2);
-		assertEquals(null,dbInstance.getCinemaList().get(2).getTheatre(2));
+
+		assertEquals(2,dbInstance.getCinemaList().size());
 	}
 	@Test
 
 	public void testRemoveTheatre2() {
+		restoreData();
+
 		ByteArrayOutputStream stream=new ByteArrayOutputStream();
 		PrintStream printStream=new PrintStream(stream);
 		System.setOut(printStream);
@@ -104,6 +124,8 @@ public class testCinemaManageAction {
 	@Test
 
 	public void testAddTheatre2() {
+		restoreData();
+
 		ByteArrayOutputStream stream=new ByteArrayOutputStream();
 		PrintStream printStream=new PrintStream(stream);
 		System.setOut(printStream);
