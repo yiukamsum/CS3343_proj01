@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import obj.Admin;
 import obj.Movie;
 import obj.Cinema;
+import obj.CinemaManageAction;
 import obj.DateTime;
 import obj.MovieSession;
 import obj.MovieSessionManageAction;
@@ -24,6 +25,9 @@ public class testMovieSessionManageAction {
 
     private ArrayList<MovieSession> sessionList;
 
+
+    /////////////////////
+    /* HELPER FUNCTION */
     private MovieSession createTestSession(int sessionId) {
         MovieSession testSession;
         Cinema testCinema;
@@ -43,10 +47,67 @@ public class testMovieSessionManageAction {
         return testSession;
     }
 
+    private MovieSession createTestSessionWithCinema(int sessionId, Cinema testCinema) {
+        MovieSession testSession;
+        Theatre testTheatre;
+        Movie testMovie;
+        DateTime testStartTime;
+
+        testTheatre = new Theatre(1, 5, 5);
+        testCinema.addTheatre(testTheatre);
+
+        testMovie = new getMovieAction().getMovieList().get(0);
+        testStartTime = new DateTime(2020, 11, 30, 9, 30);
+
+        testSession = new MovieSession(sessionId, testCinema, testTheatre, testMovie, testStartTime);
+
+        return testSession;
+    }
+
+    private MovieSession createSessionWithTime(int sessionId, DateTime startTime) {
+        MovieSession testSession;
+        Theatre testTheatre;
+        Cinema testCinema;
+        Movie testMovie;
+
+        testCinema = new getCinemaAction().getCinemaList().get(0);
+        testTheatre = new Theatre(1, 5, 5);
+        testCinema.addTheatre(testTheatre);
+
+        testMovie = new getMovieAction().getMovieList().get(0);
+
+        testSession = new MovieSession(sessionId, testCinema, testTheatre, testMovie, startTime);
+
+        return testSession;
+    }
+
+    private MovieSession createSessionWithTheatreAndTime(int sessionId, Theatre testTheatre, DateTime startTime) {
+        MovieSession testSession;
+        Cinema testCinema;
+        Movie testMovie;
+
+        testCinema = new getCinemaAction().getCinemaList().get(0);
+        testCinema.addTheatre(testTheatre);
+
+        testMovie = new getMovieAction().getMovieList().get(0);
+
+        testSession = new MovieSession(sessionId, testCinema, testTheatre, testMovie, startTime);
+
+        return testSession;
+    }
+
+    private Cinema createTestCinema() {
+        CinemaManageAction cinemaAction = new CinemaManageAction(Admin.getInstance());
+        Cinema testCinema = cinemaAction.createCinemaRecord("test", "test", "12345678", new ArrayList<>());
+
+        return testCinema;
+    }
+
 
     /////////////////
     /* BEFORE EACH */
     @BeforeEach
+    // restore database data before each testing
     private void restore() {
         ArrayList<MovieSession> sessionList = getAction.getMovieSession();
         ArrayList<Cinema> cinemaList = new getCinemaAction().getCinemaList();
@@ -65,13 +126,13 @@ public class testMovieSessionManageAction {
         ArrayList<String> actorList3 = new ArrayList<String>();
         actorList3.add("Actor C");
         actorList3.add("Actor D");
-        movieList.add(new Movie(1, "Movie A", DateTime.today(), 2.0, actorList1));
-        movieList.add(new Movie(2, "Movie B", DateTime.today(), 2.0, actorList2));
-        movieList.add(new Movie(3, "Movie C", DateTime.today(), 3.0, actorList3));
+        movieList.add(new Movie(1, "Movie A", new DateTime(2020, 11, 30, 9, 30), 2.0, actorList1));
+        movieList.add(new Movie(2, "Movie B", new DateTime(2020, 11, 30, 9, 30), 2.0, actorList2));
+        movieList.add(new Movie(3, "Movie C", new DateTime(2020, 11, 30, 9, 30), 3.0, actorList3));
 
         sessionList.clear();
         sessionList.add(
-            new MovieSession(1, cinemaList.get(0), cinemaList.get(0).getTheatre(1), movieList.get(0), DateTime.now())
+            new MovieSession(1, cinemaList.get(0), cinemaList.get(0).getTheatre(1), movieList.get(0), new DateTime(2021, 6, 30, 9, 30))
         );
     }
 
@@ -127,10 +188,12 @@ public class testMovieSessionManageAction {
     }
 
 
-    /* remove action */
+    /* -- REMOVE ACTION -- */
     /* ensure other session no change and the session is removed */
+
+    /* remove by id */
     @Test
-    /* the session going to be removed is exist */
+    // the session going to be removed is exist
     public void testRemoveSessionById1() {
         // add a session for checking other session no change
         sessionList.add(createTestSession(manageAction.getNextSessionID()));
@@ -163,7 +226,7 @@ public class testMovieSessionManageAction {
     }
 
     @Test
-    /* the session going to be removed is not exist */
+    // the session going to be removed is not exist
     public void testRemoveSessionById2() {
         // get a session id that is not exist
         int notExistId = manageAction.getNextSessionID();
@@ -191,8 +254,163 @@ public class testMovieSessionManageAction {
     }
 
 
+    /* remove by cinema */
     @Test
+    // the session going to be removed is exist
     public void testRemoveSessionInCinema() {
-        
+        /* add a new cinema record */
+        Cinema newCinema = createTestCinema();
+
+        /* add a new session with the new cinema */
+        MovieSession newSession = createTestSessionWithCinema(manageAction.getNextSessionID(), newCinema);
+        manageAction.addMovieSession(newSession);
+
+        // store the list before remove
+        ArrayList<MovieSession> originList = (ArrayList<MovieSession>) sessionList.clone();
+
+        // remove the new cinema
+        manageAction.removeMovieSessionInCinema(newCinema.getCinemaID());
+
+
+        /* checking */
+        ArrayList<MovieSession> curList = getAction.getMovieSession();
+
+        // check the session is removed
+        boolean sessionRemoved = !curList.contains(newSession);
+
+        // check if other session no change
+        boolean otherSessionSame = true;
+        for(int idx = 0; idx < curList.size(); idx++) {
+            if(curList.get(idx) != originList.get(idx)) {
+                otherSessionSame = false;
+                break;
+            }
+        }
+
+        assertEquals(true, sessionRemoved && otherSessionSame);
+    }
+
+    @Test
+    // the session going to be removed is not exist
+    public void testRemoveSessionInCinema2() {
+        /* add a new cinema record */
+        Cinema newCinema = createTestCinema();
+
+        // store the list before remove
+        ArrayList<MovieSession> originList = (ArrayList<MovieSession>) sessionList.clone();
+
+        // remove the new cinema
+        manageAction.removeMovieSessionInCinema(newCinema.getCinemaID());
+
+
+        /* checking */
+        ArrayList<MovieSession> curList = getAction.getMovieSession();
+
+        // check if other session no change
+        boolean otherSessionSame = true;
+        for(int idx = 0; idx < curList.size(); idx++) {
+            if(curList.get(idx) != originList.get(idx)) {
+                otherSessionSame = false;
+                break;
+            }
+        }
+
+        assertEquals(true, otherSessionSame);
+    }
+
+    /* -- REMOVE ACTION END -- */
+
+
+    /* -- GET SESSION BY THEATRE -- */
+    @Test
+    // get session with a exist theatre and a exist cinema
+    public void testGetSessionByTheatre1() {
+        ArrayList<MovieSession> res = manageAction.getSessionByTheatre(1, 1);
+
+        /* checking */
+        // all session in the testing data are in the searching theatre and cinema
+        // so the returned arraylist and the "sessionList" should be the same
+        boolean getCorrectly = true;
+        for(int idx = 0; idx < res.size(); idx++) {
+            if(res.get(idx) != sessionList.get(idx)) {
+                getCorrectly = false;
+                break;
+            }
+        }
+
+        assertEquals(true, getCorrectly);
+    }
+
+    @Test
+    // get session with a exist theatre and a not exist cinema
+    public void testGetSessionByTheatre2() {
+        // add a new cinema record
+        Cinema newCinema = createTestCinema();
+
+        ArrayList<MovieSession> res = manageAction.getSessionByTheatre(newCinema.getCinemaID(), 1);
+
+        assertEquals(0, res.size());
+    }
+
+    @Test
+    // get session with a not exist theatre and a exist cinema
+    public void testGetSessionByTheatre3() {
+        // add a new theatre in a exist cinema
+        CinemaManageAction cinemaManageAction = new CinemaManageAction(Admin.getInstance());
+        cinemaManageAction.addTheatre(1, new Theatre(2, 1, 1));
+
+        ArrayList<MovieSession> res = manageAction.getSessionByTheatre(1, 2);
+
+        assertEquals(0, res.size());
+    }
+
+    /* -- GET SESSION BY THEATRE END -- */
+
+
+    /* -- IS SESSION AVAILABLE */
+    /* only one session in the testing data, theatre 1, start time 2021-6-30 9:30, duration 2 */
+    @Test
+    // check with a session overlap with another
+    public void testIsSessionAvailable1() {
+        // create a startTime that start in the existing session
+        DateTime startTime = new DateTime(2021, 6, 30, 10, 30);
+
+        // create the session
+        MovieSession overlapSession = createSessionWithTime(manageAction.getNextSessionID(), startTime);
+
+        boolean actual = manageAction.isSessionAvailable(overlapSession);
+
+        assertEquals(false, actual);
+    }
+
+    @Test
+    // check with a session play in same theatre and time not overlap
+    public void testIsSessionAvailable2() {
+        // create a startTime that start in the existing session
+        DateTime startTime = new DateTime(2021, 8, 30, 10, 30);
+
+        // create the session
+        MovieSession overlapSession = createSessionWithTime(manageAction.getNextSessionID(), startTime);
+
+
+        boolean actual = manageAction.isSessionAvailable(overlapSession);
+
+        assertEquals(true, actual);
+    }
+
+    @Test
+    // check with a session that time overlap with a session but play in different theatre
+    public void testIsSessionAvailable3() {
+        Theatre theatre = new Theatre(2, 1, 1);
+        DateTime startTime = new DateTime(2021, 6, 30, 10, 30);
+
+        // create the session
+        MovieSession overlapSession = createSessionWithTheatreAndTime(
+            manageAction.getNextSessionID(), theatre, startTime
+        );
+
+        boolean actual = manageAction.isSessionAvailable(overlapSession);
+
+        assertEquals(true, actual);
     }
 }
