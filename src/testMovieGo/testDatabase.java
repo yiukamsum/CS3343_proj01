@@ -8,9 +8,45 @@ import obj.*;
 import java.util.*;
 public class testDatabase {
 
+	private void restoreData() {
+		getCinemaAction cinemaAction 			= new getCinemaAction();
+		getMovieAction movieAction 				= new getMovieAction();
+		getMovieSessionAction sessionAction 	= new getMovieSessionAction();
+		HistoryManageAction historyManageAction = new HistoryManageAction();
+
+		ArrayList<Cinema> cinemaList = cinemaAction.getCinemaList();
+		ArrayList<Movie> movieList = movieAction.getMovieList();
+		ArrayList<MovieSession> sessionList = sessionAction.getMovieSession();
+		ArrayList<PurchaseHistory> historyList = historyManageAction.getHistory();
+
+		cinemaList.clear();
+        Cinema cinema = new Cinema(1, "loc A", "Cinema A", "12345678");
+        cinema.addTheatre(new Theatre(1, 5, 5));
+        cinemaList.add(cinema);
+
+        movieList.clear();
+        ArrayList<String> actorList1 = new ArrayList<String>();
+        actorList1.add("Actor A");
+        ArrayList<String> actorList2 = new ArrayList<String>();
+        actorList2.add("Actor B");
+        ArrayList<String> actorList3 = new ArrayList<String>();
+        actorList3.add("Actor C");
+        actorList3.add("Actor D");
+        movieList.add(new Movie(1, "Movie A", DateTime.today(), 2.0, actorList1));
+        movieList.add(new Movie(2, "Movie B", DateTime.today(), 2.0, actorList2));
+        movieList.add(new Movie(3, "Movie C", DateTime.today(), 3.0, actorList3));
+
+        sessionList.clear();
+        sessionList.add(
+            new MovieSession(1, cinemaList.get(0), cinemaList.get(0).getTheatre(1), movieList.get(0), DateTime.now())
+        );
+
+        historyList.clear();
+	}
+
 	@Test
 	public void testGetCinemaList() {
-		
+		restoreData();
 		
 		CinemaManageAction cManageAction=new CinemaManageAction(Admin.getInstance());
 		Database dbInstance=Database.connectDB(cManageAction);
@@ -24,6 +60,8 @@ public class testDatabase {
 	}
 	@Test
 	public void testGetMovieList() {
+		restoreData();
+
 		MovieManageAction cManageAction=new MovieManageAction(Admin.getInstance());
 		
 
@@ -44,6 +82,8 @@ public class testDatabase {
 	
 	@Test
 	public void testGetMovieSessionList() {
+		restoreData();
+
 		MovieSessionManageAction cManageAction=new MovieSessionManageAction(Admin.getInstance());
 		
 		
@@ -59,6 +99,7 @@ public class testDatabase {
 	}
 	@Test
 	public void testGetPurchaseHistoryList() {
+		restoreData();
 		
 		Database dbInstanceDatabase=Database.connectDB(new CinemaManageAction(Admin.getInstance()));
 		ArrayList<PurchaseHistory> resArrayList=dbInstanceDatabase.getPurchaseHistoryList();
